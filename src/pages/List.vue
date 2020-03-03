@@ -27,6 +27,7 @@
 .my-card
   width: 150%
   max-width: 376px
+  height: 20px
 </style>
 
 <!-- นางสาวพรไพลิน กล่อมจันทร์ [end] หน้า view ของหน้าที่สอง  -->
