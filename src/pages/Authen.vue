@@ -1,8 +1,9 @@
 <template>
   <q-page padding>
     <!-- content -->
-    <h3>Authen works</h3>
-  </q-page>
+
+   <br><br><br> 
+  <!-- start icon Piggy bank -->
 </template>
 
 <script>
