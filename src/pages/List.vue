@@ -22,6 +22,7 @@
   </div>
 </template>
 
+<<<<<<< HEAD
 <style lang="sass" scoped>
 .my-card
   width: 150%
@@ -30,3 +31,17 @@
 
 <!-- นางสาวพรไพลิน กล่อมจันทร์ [end] หน้า view ของหน้าที่สอง  -->
 
+=======
+
+
+<!-- AOM -->
+
+<!-- ____________________________________________ -->
+
+
+<script>
+export default {
+  // name: 'PageName',
+}
+</script>
+>>>>>>> 78088a839b27763d92e9f67e260424bc3d1cd683
