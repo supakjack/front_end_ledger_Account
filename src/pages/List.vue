@@ -22,7 +22,6 @@
   </div>
 </template>
 
-<<<<<<< HEAD
 <style lang="sass" scoped>
 .my-card
   width: 150%
