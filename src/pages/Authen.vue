@@ -31,32 +31,40 @@
   </div>
  
   <!-- strat input username -->
-  <center>
+  <!-- <center>
   <div class="q-pa-md" >
       <div class="q-gutter-md" style="max-width: 300px; font-family:cursive; ">
         <q-input rounded outlined v-model="text" label= " Username"  />
       </div>
   </div>
-  </center>
+  </center> -->
   <!-- end input username -->
 
    <!-- strat input password -->
-  <center>
+  <!-- <center>
   <div class="q-pa-md" >
       <div class="q-gutter-md" style="max-width: 300px; font-family:cursive;">
         <q-input rounded outlined v-model="text" label=" Password" />
       </div>
   </div>
-  </center>
+  </center> -->
   <!-- end input password -->
 
   <!-- start button login -->
-  <center>
+  <!-- <center>
   <div class="q-pa-md q-gutter-sm">
     <b><q-btn class="glossy" style="font-family:cursive; font-size:16px;" rounded color="green-13" label=" LOG IN "/></b>
   </div>
-  </center>                              
+  </center>                               -->
   <!-- end button login -->
+  <br>
+   <!-- start button facebook -->
+  <center>
+  <div class="q-pa-md q-gutter-sm">
+    <b><q-btn class="glossy" style="font-family:cursive; font-size:16px;" rounded color="blue-14" label=" Log  in  with  Facebook "/></b>
+  </div>
+  </center>                              
+  <!-- end button facebook -->
 
   </q-page>  
 </template>
