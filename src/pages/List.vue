@@ -3,7 +3,7 @@
 <template>
   <div class="q-pa-md row items-start q-gutter-md ">
     <q-card class="my-card">
-        <div class="row ">
+        <div class="row">
           <div class="col-5">สรุปรายรับ - รายจ่าย</div>
           <div class="col-3 text-blue">1000.50 บาท</div>
           <div class="col-3 text-red">-100.00 บาท</div>
