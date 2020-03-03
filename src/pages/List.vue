@@ -2,9 +2,10 @@
 
 <template>
   <div class="q-pa-md row items-start q-gutter-md ">
+  <div class="q-pa-md row items-start q-gutter-md">
     <q-card class="my-card">
-        <div class="row">
-          <div class="col-5">สรุปรายรับ - รายจ่าย</div>
+        <div class="row top-center">
+          <div class="col-5 text-center">สรุปรายรับ - รายจ่าย</div>
           <div class="col-3 text-blue">1000.50 บาท</div>
           <div class="col-3 text-red">-100.00 บาท</div>
         </div>
@@ -14,11 +15,6 @@
       </q-card-section> -->
 
     </q-card>
-
-    <q-card
-      class="my-card text-white"
-      style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)">
-    </q-card>
   </div>
 </template>
 
@@ -26,7 +22,11 @@
 .my-card
   width: 150%
   max-width: 376px
-  height: 20px
+  height: 40px
+
+
+.top-center
+    margin-top: 10px
 </style>
 
 <!-- นางสาวพรไพลิน กล่อมจันทร์ [end] หน้า view ของหน้าที่สอง  -->
