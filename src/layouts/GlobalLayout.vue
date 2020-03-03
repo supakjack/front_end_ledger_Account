@@ -10,7 +10,7 @@
           round
           dense
           icon="menu"
-          @click="leftDrawer = !leftDrawer"
+          @click="leftDrawerOpen = !leftDrawerOpen"
         />
 
        <q-toolbar-title class="" style="margin-left: 20%;" >
@@ -29,16 +29,42 @@
     </q-footer>
 
     <!-- (Optional) A Drawer; you can add one more with side="right" or change this one's side -->
-    <q-drawer
-      v-model="leftDrawer"
-      side="left"
-      bordered
-      content-class="bg-grey-2"
-    >
-      <!-- QScrollArea is optional -->
-      <q-scroll-area class="fit q-pa-sm">
-        <!-- Content here -->
+    <q-drawer v-model="leftDrawerOpen" show-if-above :width="250" :breakpoint="600">
+      <q-scroll-area
+        style="height: calc(100% - 192px); margin-top: 150px; border-right: 1px solid #ddd"
+      >
+        <q-list padding>
+          <q-item exact to="/" clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="img:statics/icons/home.png" />
+            </q-item-section>
+
+            <q-item-section>หน้าแรก</q-item-section>
+          </q-item>
+
+          <q-item exact to="/help" active clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="img:statics/icons/ac.jpg" />
+            </q-item-section>
+
+            <q-item-section>บัญชี</q-item-section>
+          </q-item>
+        </q-list>
       </q-scroll-area>
+
+      <div class="absolute-top bg-cyan row items-center" style="height: 150px;">
+        <!-- <div class="bg-red"> -->
+        <div class="row justify-around full-width">
+          <q-avatar size="100px" class="q-mb-sm">
+            <img src="statics/icons/cat3.png" />
+          </q-avatar>
+          <div class="column justify-center">
+            <div class="text-weight-bold">1 บัญชี</div>
+            <div class="text-weight-bold">1000.50 บาท</div>
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
     </q-drawer>
 
     <q-page-container>
@@ -55,7 +81,7 @@ export default {
 
   data () {
     return {
-      leftDrawer: true
+      leftDrawerOpen: true
     }
   }
 }
