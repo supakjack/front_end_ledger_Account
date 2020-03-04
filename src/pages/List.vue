@@ -59,3 +59,14 @@
 
 </style>
 <!-- นางสาวพรไพลิน กล่อมจันทร์ และนางสาวพัทธนันท์ ชวลิตสุวรรณ์ [end] หน้า view ของหน้าที่สอง  -->
+
+<script>
+export default {
+  name : "List",
+  methods: {
+    onItemClick(){
+      console.log("click")
+    }
+  },
+}
+</script>

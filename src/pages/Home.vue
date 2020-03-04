@@ -77,19 +77,11 @@
 <script>
 import Chart from "chart.js";
 
-import { default as store } from "./../store/State";
 
 export default {
   name: "Home",
   mounted() {
-    let id = 25;
-    store.commit("setId", id);
 
-    let test_state = store.state.id;
-
-    console.log(test_state);
-
-    console.log(store.state.id); // -> 25
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
       type: "doughnut",
