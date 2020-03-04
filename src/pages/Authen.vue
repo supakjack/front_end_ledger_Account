@@ -2,81 +2,138 @@
   <q-page padding>
     <!-- content -->
 
-   <br><br><br> 
-  <!-- start icon Piggy bank -->
-  <div class="q-pa-md">
-   <div class="q-col-gutter-md row items-start">
-    <!-- start col 1-->  
-     <div class="col-4"></div>
-    <!-- end col 1-->
+    <br />
+    <br />
+    <br />
+    <!-- start icon Piggy bank -->
+    <div class="q-pa-md">
+      <div class="q-col-gutter-md row items-start">
+        <!-- start col 1-->
+        <div class="col-4"></div>
+        <!-- end col 1-->
 
-    <!-- start col 2-->  
-      <div class="col-4" style="width:35%">
-        <q-img 
-          src="https://image.flaticon.com/icons/svg/1660/1660899.svg"
-          :ratio="1"
-       />
+        <!-- start col 2-->
+        <div class="col-4" style="width:35%">
+          <q-img src="https://image.flaticon.com/icons/svg/1660/1660899.svg" :ratio="1" />
+        </div>
+        <!-- end col 2-->
+
+        <!-- start col 3 -->
+        <div class="col-4"></div>
+        <!-- end col 3 -->
       </div>
-    <!-- end col 2-->  
-  
-    <!-- start col 3 -->  
-      <div class="col-4"></div>
-     <!-- end col 3 --> 
     </div>
-  </div>
-  <!-- end icon Piggy bank -->
+    <!-- end icon Piggy bank -->
 
-  <div style="font-size:20px ">
-    <center><font color="#6495ED"><b style="font-family:cursive;">Piggy Pocket </b></font></center>
-  </div>
- 
-  <!-- strat input username -->
-  <!-- <center>
-  <div class="q-pa-md" >
-      <div class="q-gutter-md" style="max-width: 300px; font-family:cursive; ">
-        <q-input rounded outlined v-model="text" label= " Username"  />
+    <div style="font-size:20px ">
+      <center>
+        <font color="#6495ED">
+          <b style="font-family:cursive;">Piggy Pocket</b>
+        </font>
+      </center>
+    </div>
+
+    <br />
+    <!-- start button facebook -->
+    <center>
+      <div class="q-pa-md q-gutter-sm">
+        <b>
+          <q-btn
+            class="glossy"
+            style="font-family:cursive; font-size:16px;"
+            rounded
+            color="blue-14"
+            label=" Log  in Facebook "
+            @click="loginFb()"
+          />
+          <!-- <q-btn
+            class="glossy"
+            style="font-family:cursive; font-size:16px;"
+            rounded
+            color="blue-14"
+            label="check Log  in Facebook "
+            @click="checkLoginState()"
+          />-->
+          <q-btn
+            class="glossy"
+            style="font-family:cursive; font-size:16px;"
+            rounded
+            color="blue-14"
+            label=" Log  out Facebook "
+            @click="logoutFb()"
+          />
+          <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
+        </b>
+        <!-- <q-img
+          v-if="isLogin"
+          :src="fbPicUrl"
+          style="width: 150px"
+          :ratio="1"
+          basic
+          spinner-color="white"
+          class="rounded-borders"
+        ></q-img> -->
+        <!-- <img :src="fbPicUrl" /> -->
       </div>
-  </div>
-  </center> -->
-  <!-- end input username -->
-
-   <!-- strat input password -->
-  <!-- <center>
-  <div class="q-pa-md" >
-      <div class="q-gutter-md" style="max-width: 300px; font-family:cursive;">
-        <q-input rounded outlined v-model="text" label=" Password" />
-      </div>
-  </div>
-  </center> -->
-  <!-- end input password -->
-
-  <!-- start button login -->
-  <!-- <center>
-  <div class="q-pa-md q-gutter-sm">
-    <b><q-btn class="glossy" style="font-family:cursive; font-size:16px;" rounded color="green-13" label=" LOG IN "/></b>
-  </div>
-  </center>                               -->
-  <!-- end button login -->
-  <br>
-   <!-- start button facebook -->
-  <center>
-  <div class="q-pa-md q-gutter-sm">
-    <b><q-btn class="glossy" style="font-family:cursive; font-size:16px;" rounded color="blue-14" label=" Log  in  with  Facebook "/></b>
-  </div>
-  </center>                              
-  <!-- end button facebook -->
-
-  </q-page>  
+    </center>
+    <!-- end button facebook -->
+  </q-page>
 </template>
 
 <script>
+import { default as store } from "./../store/State";
 export default {
-  name: 'Authen',
-    data: function () {
-    return {
-      text: ''
-    }
-  }
+  name: "Authen",
+  async mounted() {
+    //  this.fbPicUrl = await `http://graph.facebook.com/${store.state.userID}/picture?type=normal`;
+    // console.log(await this.fbPicUrl);
+    // this.isLogin = await store.state.userID != 0 ? store.state.userID : 0;
+  },
+  methods: {
+    // rePicFb() {
+    //   this.isLogin = store.state.userID != 0 ? store.state.userID : 0;
+    // },
+    // checkLoginState() {
+    //   // this.fbPicUrl = `http://graph.facebook.com/${store.state.userID}/picture?type=normal`;
+    //   // console.log(this.fbPicUrl);
+    // },
+    loginFb() {
+      FB.login(function(response) {
+        if (response.status === "connected") {
+          if (response.status === "connected") {
+            store.commit("setAccessToken", response.authResponse.accessToken);
+            console.log(store.state.accessToken);
+            store.commit("setUserID", response.authResponse.userID);
+            console.log(store.state.userID);
+            console.log(response);
+            store.commit("setUserID", response.authResponse.userID);
+            // this.fbPicUrl = `http://graph.facebook.com/${response.authResponse.userID}/picture?type=normal`;
+            // console.log(this.fbPicUrl);
+            // this.mounted();
+            //
+            //
+          }
+        } else {
+          console.log("fail");
 
-}
+          // The person is not logged into your webpage or we are unable to tell.
+        }
+      });
+    },
+    logoutFb() {
+      FB.logout(function(response) {
+        console.log(response);
+      });
+    }
+  },
+  data: function() {
+    return {
+      text: "",
+      // fbPicUrl: "",
+      // isLogin: false
+    };
+  }
+};
 </script>
+
+<style lang="stylus" scoped></style>
