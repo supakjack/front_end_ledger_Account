@@ -43,7 +43,7 @@
             style="font-family:cursive; font-size:16px;"
             rounded
             color="blue-14"
-            label=" Log  in Facebook "
+            label=" ผูกกับ Facebook "
             @click="loginFb()"
           />
           <!-- <q-btn
@@ -51,7 +51,7 @@
             style="font-family:cursive; font-size:16px;"
             rounded
             color="blue-14"
-            label="check Log  in Facebook "
+            label="ผูกกับ Facebook "
             @click="checkLoginState()"
           />-->
           <q-btn
@@ -59,7 +59,7 @@
             style="font-family:cursive; font-size:16px;"
             rounded
             color="blue-14"
-            label=" Log  out Facebook "
+            label="ยกเลิกการผูก Facebook "
             @click="logoutFb()"
           />
           <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->

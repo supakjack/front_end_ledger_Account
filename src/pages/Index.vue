@@ -8,7 +8,7 @@
 export default {
   name: "PageIndex",
   mounted() {
-    setTimeout(() => this.$router.push({ path: "/authen" }), 3000);
+    setTimeout(() => this.$router.push({ path: "/home" }), 3000);
   }
 };
 </script>

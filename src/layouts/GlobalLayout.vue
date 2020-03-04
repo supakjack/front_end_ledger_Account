@@ -29,7 +29,7 @@
               <q-icon name="img:statics/icons/catiden.png" />
             </q-item-section>
 
-            <q-item-section>หน้ายืนยันตัวตน</q-item-section>
+            <q-item-section>หน้าผูกบัญชี</q-item-section>
           </q-item>
 
           <q-item exact to="/home" clickable v-ripple>
