@@ -6,25 +6,15 @@
     <br />
     <br />
     <!-- start icon Piggy bank -->
-    <div class="q-pa-md">
-      <div class="q-col-gutter-md row items-start">
-        <!-- start col 1-->
-        <div class="col-4"></div>
-        <!-- end col 1-->
-
         <!-- start col 2-->
-        <div class="col-4" style="width:35%">
-          <q-img src="https://image.flaticon.com/icons/svg/1660/1660899.svg" :ratio="1" />
+       <center>
+        <div class="col-2" style="width:200px">
+            <q-img src="https://image.flaticon.com/icons/svg/1660/1660899.svg" :ratio="1" />
         </div>
-        <!-- end col 2-->
-
-        <!-- start col 3 -->
-        <div class="col-4"></div>
-        <!-- end col 3 -->
-      </div>
-    </div>
+        </center>
     <!-- end icon Piggy bank -->
 
+    <br>
     <div style="font-size:20px ">
       <center>
         <font color="#6495ED">
@@ -33,7 +23,7 @@
       </center>
     </div>
 
-    <br />
+    <br/>
     <!-- start button facebook -->
     <center>
       <div class="q-pa-md q-gutter-sm">
@@ -53,7 +43,8 @@
             color="blue-14"
             label="ผูกกับ Facebook "
             @click="checkLoginState()"
-          />-->
+          />--> 
+          <br> <br>
           <q-btn
             class="glossy"
             style="font-family:cursive; font-size:16px;"
