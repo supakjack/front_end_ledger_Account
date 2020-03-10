@@ -67,8 +67,8 @@
     </div>
     <div class="q-pa-md q-gutter-sm">
       <div align="center">
-        <q-btn size="12px" class="q-px-xl q-py-xs" color="red" label="รายจ่าย" />
-        <q-btn size="12px" class="q-px-xl q-py-xs" color="green" label="รายรับ" />
+        <q-btn @click="addIn()" exact to="/input" size="12px" class="q-px-xl q-py-xs" color="red" label="รายจ่าย" />
+        <q-btn exact to="/input" size="12px" class="q-px-xl q-py-xs" color="green" label="รายรับ" />
       </div>
     </div>
   </q-page>
@@ -122,6 +122,15 @@ export default {
       currency: "บาท",
       value: 10
     };
-  }
+  },
+  methods: {
+    addIn(){
+      alert("income service");
+      
+    },
+     addEx(){
+      alert("Ex service");
+    }
+  },
 };
 </script>
