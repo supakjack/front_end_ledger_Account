@@ -37,7 +37,7 @@
       <q-banner class="bg-grey-3">
         <p style="text-align:left;"></p>
         <div>วันนี้</div>
-        <div>19 กุมภาพันธ์ 2020</div>
+        <div>11 มีนาคม 2020</div>
         <span style="float:right;">
           <button style="border:1px solid transparent; background-color: transparent;">
             <i class="material-icons" style="font-size:40px">keyboard_arrow_right</i>
