@@ -3,7 +3,7 @@
   <div class="q-pa-md row items-start q-gutter-md">
     <q-card class="my-card">
       <div class="row top-center">
-        <div class="col-5 text-center">สรุปรายรับ - รายจ่าย</div>
+        <div class="col-5 text-center" >สรุปรายรับ - รายจ่าย</div>
         <div class="col-3 text-blue">1000.50 บาท</div>
         <div class="col-3 text-red">-100.00 บาท</div>
       </div>
@@ -17,11 +17,11 @@
               <q-item-label></q-item-label>
               <div class="col-1">
                 <q-img
-                  src="https://lh3.googleusercontent.com/proxy/eBHN96qawDXZoVj02USh-syljsjuHein5cNu9wH7FrimxI1hSc4zoa5Yrs7-WvJ2dd1LhgHQz3M5LMwydVEgh_NeK0xojvsxe-i_9dTWHjnRG8j2jhYYFO592Ax1UW9gvwMUzvTj-OOSriXJs5B4SwOJUSpfCKR3nD_EoPjO_JCJZiyvvg"
+                  src="https://image.flaticon.com/icons/svg/639/639365.svg"
                 />
               </div>
-              <div class="col-5 text-center">รายรับ</div>
-              <div class="col-5 text-center">1000.50 บาท</div>
+              <div class="col-5 text-center text-blue" style="font-size:18px">รายรับ</div>
+              <div class="col-5 text-center" style="font-size:18px">1000.50 บาท</div>
             </div>
           </q-item-section>
         </q-item>
@@ -32,11 +32,11 @@
               <q-item-label></q-item-label>
               <div class="col-1">
                 <q-img
-                  src="https://cdn.icon-icons.com/icons2/1153/PNG/512/1486564172-finance-loan-money_81492.png"
+                  src="https://image.flaticon.com/icons/svg/1086/1086741.svg"
                 />
               </div>
-              <div class="col-5 text-center">รายจ่าย</div>
-              <div class="col-5 text-center">-100.00 บาท</div>
+              <div class="col-5 text-center text-red" style="font-size:18px">รายจ่าย</div>
+              <div class="col-5 text-center" style="font-size:18px">-100.00 บาท</div>
             </div>
           </q-item-section>
         </q-item>
