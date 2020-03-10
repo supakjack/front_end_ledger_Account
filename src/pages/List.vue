@@ -32,7 +32,8 @@
               <q-item-label></q-item-label>
               <div class="col-1">
                 <q-img
-                  src="https://cdn.icon-icons.com/icons2/1153/PNG/512/1486564172-finance-loan-money_81492.png"/>
+                  src="https://cdn.icon-icons.com/icons2/1153/PNG/512/1486564172-finance-loan-money_81492.png"
+                />
               </div>
               <div class="col-5 text-center">รายจ่าย</div>
               <div class="col-5 text-center">-100.00 บาท</div>
@@ -62,11 +63,29 @@
 
 <script>
 export default {
-  name : "List",
+  name: "List",
   methods: {
-    onItemClick(){
-      console.log("click")
+    onItemClick() {
+      console.log("click");
     }
-  },
-}
+  }
+};
+</script>
+
+<script>
+import Chart from "chart.js";
+
+export default {
+  data() {
+    return {
+      total: "1000.50",
+      expense: "100.00",
+      expense_today: "100.00",
+      income: "1000.50",
+      income_today: "1000.50",
+      currency: "บาท",
+      value: 10
+    };
+  }
+};
 </script>
