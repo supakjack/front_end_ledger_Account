@@ -82,7 +82,7 @@
         filled
         type="number"
         v-model="Total_money"
-        label="จำนวนเงินที่เปิดบัญชี"
+        label="ยอดเงินคงเหลือ"
       />
 
 <br>
@@ -191,7 +191,7 @@ export default {
       name_regis:" ",
       Total_money_regis:" ",
        medium: false,
-      Total_money:"500",
+      Total_money:"1000",
       expanded: false,
       newTask: "",
       tasks: [
