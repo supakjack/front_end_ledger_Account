@@ -61,7 +61,7 @@
   <q-input
         filled
         v-model="name"
-        label="ชื่อ - นามสกุล"
+        label="ชื่อบัญชี"
       />
 <br>
   <q-input
@@ -130,7 +130,7 @@
         filled
         type="text"
         v-model="name_regis"
-        label="ชื่อ - นามสกุล"
+        label="ชื่อบัญชี"
       />
 <br>
   <q-input
@@ -163,11 +163,11 @@
 
 
         <q-card-actions align="right" class="bg-white text-teal">    
-          <q-btn color="primary" label="OK" style="width: 100%" v-close-popup  />
+          <q-btn color="primary" label="ตกลง" style="width: 100%" v-close-popup  />
           <br>
           <br>
           <br>
-          <q-btn color="red" label="Cancel" style="width: 100%" />
+          <q-btn color="red" label="ยกเลิก" style="width: 100%" />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -186,7 +186,7 @@ export default {
   data() {
     return {
       name:"Supatchai gamaporn",
-      money:"bath",
+      money:"บาท",
       money_regis:" ",
       name_regis:" ",
       Total_money_regis:" ",
