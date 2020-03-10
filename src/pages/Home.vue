@@ -67,8 +67,8 @@
     </div>
     <div class="q-pa-md q-gutter-sm">
       <div align="center">
-        <q-btn @click="addEx()" exact to="/input" size="12px" class="q-px-xl q-py-xs" color="red" label="รายจ่าย" />
-        <q-btn @click="addIn()" exact to="/input" size="12px" class="q-px-xl q-py-xs" color="green" label="รายรับ" />
+        <q-btn  exact to="/expenses" size="12px" class="q-px-xl q-py-xs" color="red" label="รายจ่าย" />
+        <q-btn exact to="/Income" size="12px" class="q-px-xl q-py-xs" color="green" label="รายรับ" />
       </div>
     </div>
   </q-page>
