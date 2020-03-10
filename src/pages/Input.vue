@@ -140,7 +140,7 @@ export default {
     };
   },
   async mounted() {
-   
+    console.log(home_income);
   },
   methods: {
     addTask() {
