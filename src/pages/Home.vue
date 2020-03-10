@@ -11,7 +11,7 @@
         </div>
         <div class="col">
           <center>
-            <b style="font-size:18px; text-align:center;">{{total}} บาท</b>
+            <b style="font-size:18px; text-align:center;">{{total}} {{currency}}</b>
           </center>
         </div>
       </div>
@@ -29,8 +29,8 @@
       </div>
 
       <div class="row" style="font-size:15px;">
-        <div class="col" style="color:red; text-align:center;">{{expense}} บาท</div>
-        <div class="col" style="color:blue; text-align:center;">{{Income}} บาท</div>
+        <div class="col" style="color:red; text-align:center;">{{expense}} {{currency}}</div>
+        <div class="col" style="color:blue; text-align:center;">{{income}} {{currency}}</div>
       </div>
     </div>
     <div class="q-pa-md q-gutter-sm">
@@ -50,7 +50,7 @@
             <div style="font-size:25px">local_grocery_store</div>
           </i>รายจ่าย
           <span style="float:right;">
-            <p align="right">100.00 บาท</p>
+            <p align="right">{{expense_today}} {{currency}}</p>
           </span>
         </p>
       </q-banner>
@@ -60,7 +60,7 @@
             <div style="font-size:25px">local_atm</div>
           </i>รายรับ
           <span style="float:right;">
-            <p align="right">1000.50 บาท</p>
+            <p align="right">{{income_today}} {{currency}}</p>
           </span>
         </p>
       </q-banner>
@@ -116,7 +116,10 @@ export default {
     return {
       total: "1000.50",
       expense: "100.00",
-      Income: "1000.50",
+      expense_today: "100.00",
+      income: "1000.50",
+      income_today: "1000.50",
+      currency: "บาท",
       value: 10
     };
   }
