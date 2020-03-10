@@ -43,7 +43,7 @@
 
 
 <div class="q-pa-md" style="width: 100%">
-    <q-toggle v-model="expanded" label="Expanded" class="q-mb-md" />
+    <!-- <q-toggle v-model="expanded" label="Expanded" class="q-mb-md" /> -->
     
     <q-expansion-item
       v-model="expanded"
@@ -104,7 +104,7 @@
 
 
   <!-- end tab 1  -->
-       <div class="q-pa-md q-gutter-sm " style="max-width: 1500px">
+       <div class="q-pa-md q-gutter-sm " style="max-width: 1500px; margin-top :400px; " >
 
             <q-btn label="เพิ่มบัญชี" color="primary" style="width: 100%" @click="medium = true" />
       
@@ -255,7 +255,6 @@ export default {
 .no-task {
   opacity: 0.5;
 }
-
 
 
 </style>
