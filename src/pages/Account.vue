@@ -61,14 +61,14 @@
   <q-input
         filled
         v-model="name"
-        label="Your name *"
+        label="ชื่อ - นามสกุล"
       />
 <br>
   <q-input
         filled
-        type="number"
+        type="text"
         v-model="money"
-        label="Your Money"
+        label="สกุลเงิน"
       />
 
 <br>
@@ -82,7 +82,7 @@
         filled
         type="number"
         v-model="Total_money"
-        label="Total Money"
+        label="จำนวนเงินที่เปิดบัญชี"
       />
 
 <br>
@@ -97,9 +97,6 @@
         <div  class="q-pa-md" style="max-width: 1500px">    
           <q-btn color="red" label="ยกเลิก" style="width: 100%" />
         </div>
-
-
-
         
       </q-card>
     </q-expansion-item>
@@ -107,12 +104,73 @@
 
 
   <!-- end tab 1  -->
+       <div class="q-pa-md q-gutter-sm " style="max-width: 1500px">
 
+            <q-btn label="เพิ่มบัญชี" color="primary" style="width: 100%" @click="medium = true" />
+      
+       <q-dialog
+      v-model="medium">
+      <q-card style="width: 700px; max-width: 80vw;">
+        <q-card-section>
+          <div class="text-h6">เพิ่มบัญชี</div>
+        </q-card-section>
+
+  
+                
+
+         
+      <q-card>
+        <q-card-section>
+
+           <q-item-section >
+            รายละเอียดบัญชี
+          </q-item-section>
+<br>
+  <q-input
+        filled
+        type="text"
+        v-model="name_regis"
+        label="ชื่อ - นามสกุล"
+      />
+<br>
+  <q-input
+        filled
+        type="text"
+        v-model="money_regis"
+        label="สกุลเงิน"
+      />
 
 <br>
 <br>
-        <div class="q-pa-md q-gutter-sm " style="max-width: 1500px">
-            <q-btn label="เพิ่มบัญชี" color="primary" style="width: 100%" @click="prompt" />
+
+      <q-item-section >
+            ประเภทบัญชี เงินสด
+          </q-item-section>
+<br>
+  <q-input
+        filled
+        type="number"
+        v-model="Total_money_regis"
+        label="จำนวนเงิน (บาท)"
+      />
+ </q-card-section>
+
+
+
+
+        
+      </q-card>
+
+
+        <q-card-actions align="right" class="bg-white text-teal">    
+          <q-btn color="primary" label="OK" style="width: 100%" v-close-popup  />
+          <br>
+          <br>
+          <br>
+          <q-btn color="red" label="Cancel" style="width: 100%" />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
       </div>
 
 
@@ -127,9 +185,13 @@ export default {
   name:"wxdwxwd",
   data() {
     return {
-      money:'',
-      Total_money:'',
-      name:"สุพัดชัย",
+      name:"Supatchai gamaporn",
+      money:"bath",
+      money_regis:" ",
+      name_regis:" ",
+      Total_money_regis:" ",
+       medium: false,
+      Total_money:"500",
       expanded: false,
       newTask: "",
       tasks: [
@@ -140,7 +202,17 @@ export default {
     };
   },
   async mounted() {
-   
+    let personContext = await Person_context;
+    let personModel = await Person_model;
+    console.log("<--- debug class --->");
+    // console.log(personContext);
+    // console.log(personModel);
+    await personContext.get_all_person();
+    console.log(await personContext.persons);
+    await personContext.persons.map(person => {
+      console.log(person);
+    });
+    console.log("<--- debug class --->");
   },
   methods: {
     addTask() {
@@ -162,26 +234,8 @@ export default {
           this.tasks.splice(index, 1);
           this.$q.notify("Task delete");
         });
-    },
-     prompt () {
-      this.$q.dialog({
-        title: 'รายละเอียดบัญชี',
-        message: 'ชื่อเจ้าของบัญชี',
-        prompt: {
-          model: '',
-          type: 'text' // optional
-        },
-        cancel: true,
-        persistent: true
-      }).onOk(data => {
-        // console.log('>>>> OK, received', data)
-      }).onCancel(() => {
-        // console.log('>>>> Cancel')
-      }).onDismiss(() => {
-        // console.log('I am triggered on both OK and Cancel')
-      })
     }
-  }
+  },
 
   
 };
