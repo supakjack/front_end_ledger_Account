@@ -9,7 +9,7 @@
       </div>
     </q-card>
 
-    <q-btn-dropdown label="ข้อมูลรายรับ - รายจ่ายในวันที่ 19/02/2020">
+    <q-btn-dropdown label="ข้อมูลรายรับ - รายจ่ายในวันที่ 10/03/2020">
       <q-list>
         <q-item clickable v-close-popup @click="onItemClick">
           <q-item-section>
@@ -21,7 +21,7 @@
                 />
               </div>
               <div class="col-5 text-center text-blue" style="font-size:18px">รายรับ</div>
-              <div class="col-5 text-center" style="font-size:18px">1000.50 บาท</div>
+              <div class="col-5 text-center" style="font-size:18px">500.00 บาท</div>
             </div>
           </q-item-section>
         </q-item>
@@ -36,12 +36,48 @@
                 />
               </div>
               <div class="col-5 text-center text-red" style="font-size:18px">รายจ่าย</div>
-              <div class="col-5 text-center" style="font-size:18px">-100.00 บาท</div>
+              <div class="col-5 text-center" style="font-size:18px">-50.00 บาท</div>
             </div>
           </q-item-section>
         </q-item>
       </q-list>
     </q-btn-dropdown>
+
+     <q-btn-dropdown label="ข้อมูลรายรับ - รายจ่ายในวันที่ 09/03/2020">
+      <q-list>
+        <q-item clickable v-close-popup @click="onItemClick">
+          <q-item-section>
+            <div class="row top-center">
+              <q-item-label></q-item-label>
+              <div class="col-1">
+                <q-img
+                  src="https://image.flaticon.com/icons/svg/639/639365.svg"
+                />
+              </div>
+              <div class="col-5 text-center text-blue" style="font-size:18px">รายรับ</div>
+              <div class="col-5 text-center" style="font-size:18px">500.50 บาท</div>
+            </div>
+          </q-item-section>
+        </q-item>
+
+        <q-item clickable v-close-popup @click="onItemClick">
+          <q-item-section>
+            <div class="row top-center">
+              <q-item-label></q-item-label>
+              <div class="col-1">
+                <q-img
+                  src="https://image.flaticon.com/icons/svg/1086/1086741.svg"
+                />
+              </div>
+              <div class="col-5 text-center text-red" style="font-size:18px">รายจ่าย</div>
+              <div class="col-5 text-center" style="font-size:18px">-50.00 บาท</div>
+            </div>
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </q-btn-dropdown>
+
+
   </div>
 </template>
 
