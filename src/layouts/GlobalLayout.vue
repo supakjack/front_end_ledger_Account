@@ -46,7 +46,7 @@
               <q-icon name="img:statics/icons/journal.png" />
             </q-item-section>
 
-            <q-item-section>หน้าบันทึกรายรายจ่าย</q-item-section>
+            <q-item-section>หน้าแสดงการบันทึกรายรับรายจ่าย</q-item-section>
           </q-item>
 
           <q-item exact to="/account" active clickable v-ripple>
