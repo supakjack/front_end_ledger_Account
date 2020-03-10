@@ -1,7 +1,7 @@
 <template>
   <q-page padding>
     <!-- content -->
-    
+
     <div class="q-pa-md">
       <div class="column" style="height: 150px">
         <div class="col">
@@ -77,11 +77,9 @@
 <script>
 import Chart from "chart.js";
 
-
 export default {
   name: "Home",
   mounted() {
-
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
       type: "doughnut",
