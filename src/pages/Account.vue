@@ -49,7 +49,7 @@
       v-model="expanded"
       icon="monetization_on"
       label="เงินสด"
-      caption="1500.00 บาท"
+      caption="1000.50 บาท"
     >
       <q-card>
         <q-card-section>
@@ -172,9 +172,6 @@
       </q-card>
     </q-dialog>
       </div>
-
-
-
   </q-page>
 </template>
 
@@ -191,7 +188,7 @@ export default {
       name_regis:" ",
       Total_money_regis:" ",
        medium: false,
-      Total_money:"1000",
+      Total_money:"1000.50",
       expanded: false,
       newTask: "",
       tasks: [
