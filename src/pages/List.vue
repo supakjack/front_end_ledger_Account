@@ -114,11 +114,12 @@ import Chart from "chart.js";
 export default {
   data() {
     return {
-      total: "500.25",
-      expense: "100.00",
-      expense_today: "100.00",
+      total_income: "1000.50",
+      total_expense: "100.00",
+      // expense_today: "100.00",
       income: "1000.50",
-      income_today: "1000.50",
+      expense: "50",
+      // income_today: "1000.50",
       currency: "บาท",
       value: 10
     };
