@@ -118,7 +118,7 @@ export default {
       total_expense: "100.00",
       // expense_today: "100.00",
       income: "500.25",
-      expense: "50",
+      expense: "50.00",
       // income_today: "1000.50",
       currency: "บาท",
       value: 10
