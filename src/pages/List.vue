@@ -4,8 +4,8 @@
     <q-card class="my-card">
       <div class="row top-center">
         <div class="col-5 text-center" >สรุปรายรับ - รายจ่าย</div>
-        <div class="col-3 text-blue">{{total}}{{currency}}</div>
-        <div class="col-3 text-red">{{expense}}{{currency}}</div>
+        <div class="col-3 text-blue">{{total_income}}{{currency}}</div>
+        <div class="col-3 text-red">{{total_expense}}{{currency}}</div>
       </div>
     </q-card>
 
@@ -117,7 +117,7 @@ export default {
       total_income: "1000.50",
       total_expense: "100.00",
       // expense_today: "100.00",
-      income: "1000.50",
+      income: "500.25",
       expense: "50",
       // income_today: "1000.50",
       currency: "บาท",
