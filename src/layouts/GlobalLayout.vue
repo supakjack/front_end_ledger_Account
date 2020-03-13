@@ -40,7 +40,6 @@
             <q-item-section>หน้าหลัก</q-item-section>
           </q-item>
 
-
           <q-item exact to="/list" active clickable v-ripple>
             <q-item-section avatar>
               <q-icon name="img:statics/icons/journal.png" />
@@ -57,18 +56,15 @@
             <q-item-section>หน้าบัญชี</q-item-section>
           </q-item>
 
-           <q-item exact to="/authen" active clickable v-ripple>
+          <q-item @click="logoutFb()" active clickable v-ripple>
             <q-item-section avatar>
-              <q-img  width="25px" src="https://image.flaticon.com/icons/svg/2635/2635961.svg" />
+              <q-img width="25px" src="https://image.flaticon.com/icons/svg/2635/2635961.svg" />
             </q-item-section>
 
             <q-item-section class="text-red">ออกจากบัญชี</q-item-section>
           </q-item>
-
         </q-list>
       </q-scroll-area>
-
-      
 
       <div class="absolute-top bg-cyan row items-center" style="height: 150px;">
         <!-- <div class="bg-red"> -->
@@ -93,9 +89,21 @@
 </template>
 
 <script>
+import FacebookServices from "./../services/FacebookServices";
+
 export default {
   name: "GlobalLayout",
-  methods: {},
+  mounted() {
+    new FacebookServices().setEnviroment();
+  },
+  methods: {
+    // loginFb() {
+    //   new FacebookServices().login();
+    // },
+    logoutFb() {
+      new FacebookServices().logout();
+    }
+  },
   data() {
     return {
       leftDrawerOpen: true

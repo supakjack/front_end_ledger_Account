@@ -79,6 +79,7 @@ export default {
     //  this.fbPicUrl = await `http://graph.facebook.com/${store.state.userID}/picture?type=normal`;
     // console.log(await this.fbPicUrl);
     // this.isLogin = await store.state.userID != 0 ? store.state.userID : 0;
+    new FacebookServices().setEnviroment()
   },
   methods: {
     // rePicFb() {
@@ -91,9 +92,9 @@ export default {
     loginFb() {
       new FacebookServices().login()
     },
-    logoutFb() {
-      new FacebookServices().logout()
-    }
+    // logoutFb() {
+    //   new FacebookServices().logout()
+    // }
   },
   data: function() {
     return {
