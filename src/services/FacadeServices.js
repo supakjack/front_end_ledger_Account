@@ -18,9 +18,12 @@ export default class FacadeServices {
     return this.#axiosServices;
   }
   makeChart() {
-    return this.#axiosServices;
+    return this.#chartServices;
   }
-  makeAxios() {
-    return this.#axiosServices;
+  makeSwal() {
+    return this.#swalServices;
+  }
+  makeFacebok() {
+    return this.#facebookServices;
   }
 }
