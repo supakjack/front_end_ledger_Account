@@ -16,7 +16,7 @@
             <q-btn @click="addTask" round dense flat icon="add" />
           </template>
         </q-input>
-      </div> -->
+      </div>-->
 
       <q-item
         clickable
@@ -38,157 +38,106 @@
         </q-item-section>
       </q-item>
     </q-list>
-     
-    
 
+    <div class="q-pa-md" style="width: 100%">
+      <!-- <q-toggle v-model="expanded" label="Expanded" class="q-mb-md" /> -->
 
-<div class="q-pa-md" style="width: 100%">
-    <!-- <q-toggle v-model="expanded" label="Expanded" class="q-mb-md" /> -->
-    
-    <q-expansion-item
-      v-model="expanded"
-      icon="monetization_on"
-      label="เงินสด"
-      caption="1000.50 บาท"
-    >
-      <q-card>
-        <q-card-section>
+      <q-expansion-item
+        v-model="expanded"
+        icon="monetization_on"
+        label="เงินสด"
+        caption="1000.50 บาท"
+      >
+        <q-card>
+          <q-card-section>
+            <q-item-section>รายละเอียดบัญชี</q-item-section>
+            <br />
+            <q-input filled v-model="name" label="ชื่อบัญชี" />
+            <br />
+            <q-input filled type="text" v-model="money" label="สกุลเงิน" />
 
-           <q-item-section >
-            รายละเอียดบัญชี
-          </q-item-section>
-<br>
-  <q-input
-        filled
-        v-model="name"
-        label="ชื่อบัญชี"
-      />
-<br>
-  <q-input
-        filled
-        type="text"
-        v-model="money"
-        label="สกุลเงิน"
-      />
+            <br />
+            <br />
 
-<br>
-<br>
+            <q-item-section>ประเภทบัญชี เงินสด</q-item-section>
+            <br />
+            <q-input filled type="number" v-model="Total_money" label="ยอดเงินคงเหลือ" />
 
-      <q-item-section >
-            ประเภทบัญชี เงินสด
-          </q-item-section>
-<br>
-  <q-input
-        filled
-        type="number"
-        v-model="Total_money"
-        label="ยอดเงินคงเหลือ"
-      />
-
-<br>
-
-
-
-        </q-card-section>
-        <!-- <div  class="q-pa-md" style="max-width: 1500px">    
+            <br />
+          </q-card-section>
+          <!-- <div  class="q-pa-md" style="max-width: 1500px">    
           <q-btn color="primary" label="ยืนยัน" style="width: 100%" />
-        </div> -->
+          </div>-->
 
-        <div  class="q-pa-md" style="max-width: 1500px">    
-          <q-btn color="red" label="ยกเลิก" style="width: 100%" />
-        </div>
-        
-      </q-card>
-    </q-expansion-item>
-  </div>
+          <div class="q-pa-md" style="max-width: 1500px">
+            <q-btn color="red" label="ยกเลิก" style="width: 100%" />
+          </div>
+        </q-card>
+      </q-expansion-item>
+    </div>
 
+    <!-- end tab 1  -->
+    <div class="q-pa-md q-gutter-sm" style="max-width: 1500px; margin-top :400px; ">
+      <q-btn label="เพิ่มบัญชี" color="primary" style="width: 100%" @click="medium = true" />
 
-  <!-- end tab 1  -->
-       <div class="q-pa-md q-gutter-sm " style="max-width: 1500px; margin-top :400px; " >
+      <q-dialog v-model="medium">
+        <q-card style="width: 700px; max-width: 80vw;">
+          <q-card-section>
+            <div class="text-h6">เพิ่มบัญชี</div>
+          </q-card-section>
 
-            <q-btn label="เพิ่มบัญชี" color="primary" style="width: 100%" @click="medium = true" />
-      
-       <q-dialog
-      v-model="medium">
-      <q-card style="width: 700px; max-width: 80vw;">
-        <q-card-section>
-          <div class="text-h6">เพิ่มบัญชี</div>
-        </q-card-section>
+          <q-card>
+            <q-card-section>
+              <q-item-section>รายละเอียดบัญชี</q-item-section>
+              <br />
+              <q-input filled type="text" v-model="name_regis" label="ชื่อบัญชี" />
+              <br />
+              <q-input filled type="text" v-model="money_regis" label="สกุลเงิน" />
 
-  
-                
+              <br />
+              <br />
 
-         
-      <q-card>
-        <q-card-section>
+              <q-item-section>ประเภทบัญชี เงินสด</q-item-section>
+              <br />
+              <q-input filled type="number" v-model="Total_money_regis" label="จำนวนเงิน (บาท)" />
+            </q-card-section>
+          </q-card>
 
-           <q-item-section >
-            รายละเอียดบัญชี
-          </q-item-section>
-<br>
-  <q-input
-        filled
-        type="text"
-        v-model="name_regis"
-        label="ชื่อบัญชี"
-      />
-<br>
-  <q-input
-        filled
-        type="text"
-        v-model="money_regis"
-        label="สกุลเงิน"
-      />
-
-<br>
-<br>
-
-      <q-item-section >
-            ประเภทบัญชี เงินสด
-          </q-item-section>
-<br>
-  <q-input
-        filled
-        type="number"
-        v-model="Total_money_regis"
-        label="จำนวนเงิน (บาท)"
-      />
- </q-card-section>
-
-
-
-
-        
-      </q-card>
-
-
-        <q-card-actions align="right" class="bg-white text-teal">    
-          <q-btn color="primary" label="ตกลง" style="width: 100%" v-close-popup  />
-          <br>
-          <br>
-          <br>
-          <q-btn color="red" label="ยกเลิก" style="width: 100%" />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
-      </div>
+          <q-card-actions align="right" class="bg-white text-teal">
+            <q-btn
+              @click="add_acount()"
+              color="primary"
+              label="ตกลง"
+              style="width: 100%"
+              v-close-popup
+            />
+            <br />
+            <br />
+            <br />
+            <q-btn color="red" label="ยกเลิก" style="width: 100%" />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
+    </div>
   </q-page>
 </template>
 
 
 <script>
+import FacadeServices from "./../services/FacadeServices";
+const axios = new FacadeServices().makeAxios();
 
 export default {
-  name:"wxdwxwd",
+  name: "wxdwxwd",
   data() {
     return {
-      name:"Supatchai gamaporn",
-      money:"บาท",
-      money_regis:" ",
-      name_regis:" ",
-      Total_money_regis:" ",
-       medium: false,
-      Total_money:"1000.50",
+      name: "Supatchai gamaporn",
+      money: "บาท",
+      money_regis: " ",
+      name_regis: " ",
+      Total_money_regis: " ",
+      medium: false,
+      Total_money: "1000.50",
       expanded: false,
       newTask: "",
       tasks: [
@@ -219,6 +168,18 @@ export default {
       });
       this.newTask = "";
     },
+    add_acount() {
+      let new_acount = {
+        name: this.name_regis,
+        amount: this.Total_money_regis,
+        currency: this.money_regis,
+        id: 1
+      };
+      console.log(new_acount);
+      new axios().postHttp("books", new_acount).then(result => {
+        console.log(result);
+      });
+    },
     deleteTask(index) {
       this.$q
         .dialog({
@@ -232,13 +193,8 @@ export default {
           this.$q.notify("Task delete");
         });
     }
-  },
-
-  
+  }
 };
-
-
-
 </script>
 
 
@@ -252,6 +208,4 @@ export default {
 .no-task {
   opacity: 0.5;
 }
-
-
 </style>
