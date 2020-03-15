@@ -72,13 +72,14 @@
 </template>
 
 <script>
-import { default as store } from "./../store/State";
+import FacebookServices from "./../services/FacebookServices";
 export default {
   name: "Authen",
   async mounted() {
     //  this.fbPicUrl = await `http://graph.facebook.com/${store.state.userID}/picture?type=normal`;
     // console.log(await this.fbPicUrl);
     // this.isLogin = await store.state.userID != 0 ? store.state.userID : 0;
+    new FacebookServices().setEnviroment()
   },
   methods: {
     // rePicFb() {
@@ -89,33 +90,11 @@ export default {
     //   // console.log(this.fbPicUrl);
     // },
     loginFb() {
-      FB.login(function(response) {
-        if (response.status === "connected") {
-          if (response.status === "connected") {
-            store.commit("setAccessToken", response.authResponse.accessToken);
-            console.log(store.state.accessToken);
-            store.commit("setUserID", response.authResponse.userID);
-            console.log(store.state.userID);
-            console.log(response);
-            store.commit("setUserID", response.authResponse.userID);
-            // this.fbPicUrl = `http://graph.facebook.com/${response.authResponse.userID}/picture?type=normal`;
-            // console.log(this.fbPicUrl);
-            // this.mounted();
-            //
-            //
-          }
-        } else {
-          console.log("fail");
-
-          // The person is not logged into your webpage or we are unable to tell.
-        }
-      });
+      new FacebookServices().login()
     },
-    logoutFb() {
-      FB.logout(function(response) {
-        console.log(response);
-      });
-    }
+    // logoutFb() {
+    //   new FacebookServices().logout()
+    // }
   },
   data: function() {
     return {

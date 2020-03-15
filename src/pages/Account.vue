@@ -43,13 +43,13 @@
 
 
 <div class="q-pa-md" style="width: 100%">
-    <q-toggle v-model="expanded" label="Expanded" class="q-mb-md" />
+    <!-- <q-toggle v-model="expanded" label="Expanded" class="q-mb-md" /> -->
     
     <q-expansion-item
       v-model="expanded"
       icon="monetization_on"
       label="เงินสด"
-      caption="1500.00 บาท"
+      caption="1000.50 บาท"
     >
       <q-card>
         <q-card-section>
@@ -61,7 +61,7 @@
   <q-input
         filled
         v-model="name"
-        label="ชื่อ - นามสกุล"
+        label="ชื่อบัญชี"
       />
 <br>
   <q-input
@@ -82,7 +82,7 @@
         filled
         type="number"
         v-model="Total_money"
-        label="จำนวนเงินที่เปิดบัญชี"
+        label="ยอดเงินคงเหลือ"
       />
 
 <br>
@@ -104,7 +104,7 @@
 
 
   <!-- end tab 1  -->
-       <div class="q-pa-md q-gutter-sm " style="max-width: 1500px">
+       <div class="q-pa-md q-gutter-sm " style="max-width: 1500px; margin-top :400px; " >
 
             <q-btn label="เพิ่มบัญชี" color="primary" style="width: 100%" @click="medium = true" />
       
@@ -130,7 +130,7 @@
         filled
         type="text"
         v-model="name_regis"
-        label="ชื่อ - นามสกุล"
+        label="ชื่อบัญชี"
       />
 <br>
   <q-input
@@ -163,7 +163,7 @@
 
 
         <q-card-actions align="right" class="bg-white text-teal">    
-          <q-btn color="primary" label="บันทึก" style="width: 100%" v-close-popup  />
+          <q-btn color="primary" label="ตกลง" style="width: 100%" v-close-popup  />
           <br>
           <br>
           <br>
@@ -172,9 +172,6 @@
       </q-card>
     </q-dialog>
       </div>
-
-
-
   </q-page>
 </template>
 
@@ -186,12 +183,12 @@ export default {
   data() {
     return {
       name:"Supatchai gamaporn",
-      money:"bath",
+      money:"บาท",
       money_regis:" ",
       name_regis:" ",
       Total_money_regis:" ",
        medium: false,
-      Total_money:"500",
+      Total_money:"1000.50",
       expanded: false,
       newTask: "",
       tasks: [
@@ -202,17 +199,17 @@ export default {
     };
   },
   async mounted() {
-    let personContext = await Person_context;
-    let personModel = await Person_model;
-    console.log("<--- debug class --->");
-    // console.log(personContext);
-    // console.log(personModel);
-    await personContext.get_all_person();
-    console.log(await personContext.persons);
-    await personContext.persons.map(person => {
-      console.log(person);
-    });
-    console.log("<--- debug class --->");
+    // let personContext = await Person_context;
+    // let personModel = await Person_model;
+    // console.log("<--- debug class --->");
+    // // console.log(personContext);
+    // // console.log(personModel);
+    // await personContext.get_all_person();
+    // console.log(await personContext.persons);
+    // await personContext.persons.map(person => {
+    //   console.log(person);
+    // });
+    // console.log("<--- debug class --->");
   },
   methods: {
     addTask() {
@@ -255,7 +252,6 @@ export default {
 .no-task {
   opacity: 0.5;
 }
-
 
 
 </style>

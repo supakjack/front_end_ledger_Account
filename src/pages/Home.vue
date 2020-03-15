@@ -76,10 +76,54 @@
 
 <script>
 import Chart from "chart.js";
+import FacadeServices from "./../services/FacadeServices";
+const axios = new FacadeServices().makeAxios();
 
 export default {
   name: "Home",
   mounted() {
+    
+    new axios().getHttp("books/amount/2").then(result => {
+      result.data.map((item,index)=>{
+        console.log(item)
+        this.total = item.amount
+      })
+    });
+
+    new axios().getHttp("books/currency/2").then(result => {
+      result.data.map((item,index)=>{
+        console.log(item)
+        this.currency = item.currency
+      })
+    });
+
+    new axios().getHttp("books/expense/2").then(result => {
+      result.data.map((item,index)=>{
+        console.log(item)
+        this.expense = item.expense
+      })
+    });
+   new axios().getHttp("books/income/2").then(result => {
+      result.data.map((item,index)=>{
+        console.log(item)
+        this.income = item.income
+      })
+    });
+
+    // new axios().getHttp("books/expense_today/2").then(result => {
+    //   result.data.map((item,index)=>{
+    //     console.log(item)
+    //     this.expense_today = item.expense_today
+    //   })
+    // });
+
+    // new axios().getHttp("books/income_today/2").then(result => {
+    //   result.data.map((item,index)=>{
+    //     console.log(item)
+    //     this.income_today = item.income_today
+    //   })
+    // });
+
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
       type: "doughnut",
