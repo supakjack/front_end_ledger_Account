@@ -34,7 +34,7 @@
     <!-- strat ปุ่มบันทึก  -->
     <div class="q-pa-md q-gutter-sm">
       <center>
-        <q-btn color="secondary" label="บันทีก" />
+        <q-btn @click="addIn()" color="secondary" label="บันทีก" />
       </center>
     </div>
     <!-- end ปุ่มบันทึก  -->
@@ -42,10 +42,13 @@
 </template>
 
 <script>
+import FacadeServices from "./../services/FacadeServices";
+const axios = new FacadeServices().makeAxios();
+
 export default {
   name: "Income",
   mounted() {
-    this.currencyLabels = "จำนวนเงิน (" + this.currency + ")"
+    this.currencyLabels = "จำนวนเงิน (" + this.currency + ")";
   },
   data() {
     return {
@@ -65,9 +68,15 @@ export default {
   },
   methods: {
     addIn() {
-      alert("income service");
-      console.log(home_income);
-      home_income = "income_service";
+      let income = {
+        id: this.bookId,
+        descript: this.listId,
+        money: this.money
+      };
+      console.log(income);
+      new axios().postHttp("lists/income", income).then(result => {
+        console.log(result);
+      });
     },
     addEx() {
       alert("Ex service");
