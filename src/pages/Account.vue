@@ -179,6 +179,7 @@ export default {
       new axios().postHttp("books", new_acount).then(result => {
         console.log(result);
       });
+      this.mounted;
     },
     deleteTask(index) {
       this.$q
