@@ -90,9 +90,9 @@
 
 
         </q-card-section>
-        <div  class="q-pa-md" style="max-width: 1500px">    
-          <q-btn color="primary" label="บันทึก" style="width: 100%" />
-        </div>
+        <!-- <div  class="q-pa-md" style="max-width: 1500px">    
+          <q-btn color="primary" label="ยืนยัน" style="width: 100%" />
+        </div> -->
 
         <div  class="q-pa-md" style="max-width: 1500px">    
           <q-btn color="red" label="ยกเลิก" style="width: 100%" />
@@ -163,11 +163,11 @@
 
 
         <q-card-actions align="right" class="bg-white text-teal">    
-          <q-btn color="primary" label="OK" style="width: 100%" v-close-popup  />
+          <q-btn color="primary" label="บันทึก" style="width: 100%" v-close-popup  />
           <br>
           <br>
           <br>
-          <q-btn color="red" label="Cancel" style="width: 100%" />
+          <q-btn color="red" label="ยกเลิก" style="width: 100%" />
         </q-card-actions>
       </q-card>
     </q-dialog>
