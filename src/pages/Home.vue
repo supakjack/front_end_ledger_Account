@@ -77,14 +77,13 @@
 <script>
 import Chart from "chart.js";
 import FacadeServices from "./../services/FacadeServices";
-import AxiosServices from "./../services/AxiosServices";
+const axios = new FacadeServices().makeAxios();
+
 export default {
   name: "Home",
   mounted() {
     
-    console.log(new AxiosServices().getHttp('books/1'))
-
-    new AxiosServices().getHttp("books/amount/2").then(result => {
+    new axios().getHttp("books/amount/2").then(result => {
       result.data.map((item,index)=>{
         this.total = item.amount
       })
