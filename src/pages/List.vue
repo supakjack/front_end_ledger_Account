@@ -1,44 +1,127 @@
+<!-- นางสาวพรไพลิน กล่อมจันทร์ และนางสาวพัทธนันท์ ชวลิตสุวรรณ์ [start] หน้า view ของหน้าที่สอง -->
 <template>
-  <q-card class="my-card">
-    <q-btn>
-      <q-card-actions vertical>
-        <div class="row">
-          <div class="col-5">วันนี้ 19/02/20</div>
-          <div class="col-3">1000.50 บาท</div>
-          <div class="col-3">-100.00 บาท</div>
-          <i class="material-icons icon1-size">keyboard_arrow_up</i>
-        </div>
-      </q-card-actions>
-    </q-btn>
+  <div class="q-pa-md row items-start q-gutter-md">
+    <q-card class="my-card">
+      <div class="row top-center">
+        <div class="col-5 text-center" >สรุปรายรับ - รายจ่าย</div>
+        <div class="col-3 text-blue">{{total}}{{currency}}</div>
+        <div class="col-3 text-red">{{expense}}{{currency}}</div>
+      </div>
+    </q-card>
 
-    <div class="row">
-      <div class="col-5">
-        <q-icon name="img:statics/icon/iconfinder-basket-4341280_120547.png"/>
-      </div>
-      <div class="col-3">รายจ่าย</div>
-      <div class="col-3">-100.00 บาท</div>
-    </div>
-    <div class="row">
-      <div class="col-5">
-        <q-img
-          src="https://cdn.icon-icons.com/icons2/1153/PNG/512/1486564172-finance-loan-money_81492.png"
-          
-        />
-      </div>
-      <div class="col-3">1000.50 บาท</div>
-      <div class="col-3">-100.00 บาท</div>
-    </div>
-  </q-card>
+    <q-btn-dropdown label="ข้อมูลรายรับ - รายจ่ายในวันที่ 10/03/2020">
+      <q-list>
+        <q-item clickable v-close-popup @click="onItemClick()">
+          <q-item-section>
+            <div class="row top-center">
+              <q-item-label></q-item-label>
+              <div class="col-1">
+                <q-img
+                  src="https://image.flaticon.com/icons/svg/639/639365.svg"
+                />
+              </div>
+              <div class="col-5 text-center text-blue" style="font-size:18px">รายรับ</div>
+              <div class="col-5 text-center" style="font-size:18px">{{income}}{{currency}}</div>
+            </div>
+          </q-item-section>
+        </q-item>
+
+        <q-item clickable v-close-popup @click="onItemClick()">
+          <q-item-section>
+            <div class="row top-center">
+              <q-item-label></q-item-label>
+              <div class="col-1">
+                <q-img
+                  src="https://image.flaticon.com/icons/svg/1086/1086741.svg"
+                />
+              </div>
+              <div class="col-5 text-center text-red" style="font-size:18px">รายจ่าย</div>
+              <div class="col-5 text-center" style="font-size:18px">{{expense}}{{currency}}</div>
+            </div>
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </q-btn-dropdown>
+
+     <q-btn-dropdown label="ข้อมูลรายรับ - รายจ่ายในวันที่ 09/03/2020">
+      <q-list>
+        <q-item clickable v-close-popup @click="onItemClick()">
+          <q-item-section>
+            <div class="row top-center">
+              <q-item-label></q-item-label>
+              <div class="col-1">
+                <q-img
+                  src="https://image.flaticon.com/icons/svg/639/639365.svg"
+                />
+              </div>
+              <div class="col-5 text-center text-blue" style="font-size:18px">รายรับ</div>
+              <div class="col-5 text-center" style="font-size:18px">{{income}}{{currency}}</div>
+            </div>
+          </q-item-section>
+        </q-item>
+
+        <q-item clickable v-close-popup @click="onItemClick()">
+          <q-item-section>
+            <div class="row top-center">
+              <q-item-label></q-item-label>
+              <div class="col-1">
+                <q-img
+                  src="https://image.flaticon.com/icons/svg/1086/1086741.svg"
+                />
+              </div>
+              <div class="col-5 text-center text-red" style="font-size:18px">รายจ่าย</div>
+              <div class="col-5 text-center" style="font-size:18px">{{expense}}{{currency}}</div>
+            </div>
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </q-btn-dropdown>
+
+
+  </div>
 </template>
 
-<style>
-.icon-size {
-  font-size: 30px;
-}
-.icon1-size {
-  font-size: 20px;
-}
-.row {
-  margin-top: 10px;
-}
+<style lang="sass" scoped>
+.my-card
+  width: 150%
+  max-width: 376px
+  height: 40px
+
+.top-center
+  margin-top: 10px
+
+.q-btn-dropdown
+  width: 150%
+  text-color: black
+
 </style>
+<!-- นางสาวพรไพลิน กล่อมจันทร์ และนางสาวพัทธนันท์ ชวลิตสุวรรณ์ [end] หน้า view ของหน้าที่สอง  -->
+
+<script>
+export default {
+  name: "List",
+  methods: {
+    onItemClick() {
+      console.log("click");
+    }
+  }
+};
+</script>
+
+<script>
+import $store from "../store/State";
+
+export default {
+  data() {
+    return {
+      total: "500.25",
+      expense: "100.00",
+      expense_today: "100.00",
+      income: "1000.50",
+      income_today: "1000.50",
+      currency: "บาท",
+      value: 10
+    };
+  }
+};
+</script>
