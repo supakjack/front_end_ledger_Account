@@ -67,20 +67,26 @@ export default {
       currencyLabels: "",
        model: null,
       options: [
-        'ธนาคาร', 'เงินสด'
+        '2', '5'
       ]
     };
   },
   methods: {
     addIn() {
-      let income = {
+      let income_to_list = {
         id: this.bookId,
         descript: this.listId,
         money: this.money
       };
-      console.log(income);
-      new axios().postHttp("lists/income", income).then(result => {
+      let income_to_book = {
+        id: this.bookId,
+        descript: this.listId,
+        money: this.money
+      };
+      console.log(income_to_list);
+      new axios().postHttp("lists/income", income_to_list).then(result => {
         console.log(result);
+      
       });
     },
   }
