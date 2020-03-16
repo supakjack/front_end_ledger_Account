@@ -67,7 +67,14 @@
     </div>
     <div class="q-pa-md q-gutter-sm">
       <div align="center">
-        <q-btn  exact to="/expenses" size="12px" class="q-px-xl q-py-xs" color="red" label="รายจ่าย" />
+        <q-btn
+          exact
+          to="/expenses"
+          size="12px"
+          class="q-px-xl q-py-xs"
+          color="red"
+          label="รายจ่าย"
+        />
         <q-btn exact to="/Income" size="12px" class="q-px-xl q-py-xs" color="green" label="รายรับ" />
       </div>
     </div>
@@ -75,59 +82,50 @@
 </template>
 
 <script>
-import Chart from "chart.js";
+import $store from "../store/State";
 import FacadeServices from "./../services/FacadeServices";
 const axios = new FacadeServices().makeAxios();
+const chart = new FacadeServices().makeChart();
 
 export default {
   name: "Home",
   mounted() {
-    
+    console.log("facebookId : " + $store.state.facebookId);
+
+    $store.state.testState = 12345;
+    console.log("testState change to 12345 : " + $store.state.testState);
+
     new axios().getHttp("books/amount/2").then(result => {
-      result.data.map((item,index)=>{
-        console.log(item)
-        this.total = item.amount
-      })
+      result.data.map((item, index) => {
+        console.log(item);
+        this.total = item.amount;
+      });
     });
 
     new axios().getHttp("books/currency/2").then(result => {
-      result.data.map((item,index)=>{
-        console.log(item)
-        this.currency = item.currency
-      })
+      result.data.map((item, index) => {
+        console.log(item);
+        this.currency = item.currency;
+      });
     });
 
     new axios().getHttp("books/expense/2").then(result => {
-      result.data.map((item,index)=>{
-        console.log(item)
-        this.expense = item.expense
-      })
+      result.data.map((item, index) => {
+        console.log(item);
+        this.expense = item.expense;
+      });
     });
-   new axios().getHttp("books/income/2").then(result => {
-      result.data.map((item,index)=>{
-        console.log(item)
-        this.income = item.income
-      })
+    new axios().getHttp("books/income/2").then(result => {
+      result.data.map((item, index) => {
+        console.log(item);
+        this.income = item.income;
+      });
     });
 
-    // new axios().getHttp("books/expense_today/2").then(result => {
-    //   result.data.map((item,index)=>{
-    //     console.log(item)
-    //     this.expense_today = item.expense_today
-    //   })
-    // });
-
-    // new axios().getHttp("books/income_today/2").then(result => {
-    //   result.data.map((item,index)=>{
-    //     console.log(item)
-    //     this.income_today = item.income_today
-    //   })
-    // });
-
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-      type: "doughnut",
-      data: {
+    new chart().makeChart(
+      "myChart",
+      "doughnut",
+      {
         labels: ["รายจ่าย", "รายรับ"],
         datasets: [
           {
@@ -142,7 +140,7 @@ export default {
           }
         ]
       },
-      options: {
+      {
         scales: {
           yAxes: [
             {
@@ -154,7 +152,7 @@ export default {
           ]
         }
       }
-    });
+    );
   },
   data() {
     return {
@@ -168,16 +166,16 @@ export default {
     };
   },
   methods: {
-    addIn(){
+    addIn() {
       alert("income service");
       console.log(home_income);
-      home_income = "income_service"
+      home_income = "income_service";
     },
-     addEx(){
+    addEx() {
       alert("Ex service");
       console.log(home_income);
-      home_income = "expense_service"
+      home_income = "expense_service";
     }
-  },
+  }
 };
 </script>

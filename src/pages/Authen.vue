@@ -6,15 +6,15 @@
     <br />
     <br />
     <!-- start icon Piggy bank -->
-        <!-- start col 2-->
-       <center>
-        <div class="col-2" style="width:200px">
-            <q-img src="https://image.flaticon.com/icons/svg/1660/1660899.svg" :ratio="1" />
-        </div>
-        </center>
+    <!-- start col 2-->
+    <center>
+      <div class="col-2" style="width:200px">
+        <q-img src="https://image.flaticon.com/icons/svg/1660/1660899.svg" :ratio="1" />
+      </div>
+    </center>
     <!-- end icon Piggy bank -->
 
-    <br>
+    <br />
     <div style="font-size:20px ">
       <center>
         <font color="#6495ED">
@@ -23,7 +23,7 @@
       </center>
     </div>
 
-    <br/>
+    <br />
     <!-- start button facebook -->
     <center>
       <div class="q-pa-md q-gutter-sm">
@@ -43,8 +43,9 @@
             color="blue-14"
             label="ผูกกับ Facebook "
             @click="checkLoginState()"
-          />--> 
-          <br> <br>
+          />-->
+          <br />
+          <br />
           <!-- <q-btn
             class="glossy"
             style="font-family:cursive; font-size:16px;"
@@ -52,7 +53,7 @@
             color="red-14"
             label="Log Out Facebook "
             @click="logoutFb()"
-          /> -->
+          />-->
           <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
         </b>
         <!-- <q-img
@@ -63,7 +64,7 @@
           basic
           spinner-color="white"
           class="rounded-borders"
-        ></q-img> -->
+        ></q-img>-->
         <!-- <img :src="fbPicUrl" /> -->
       </div>
     </center>
@@ -73,13 +74,18 @@
 
 <script>
 import FacebookServices from "./../services/FacebookServices";
+import $store from "../store/State";
 export default {
   name: "Authen",
   async mounted() {
+    console.log("facebookId : " + $store.state.facebookId);
+
+    $store.state.testState = 5678;
+    console.log("testState change to 5678 : " + $store.state.testState);
     //  this.fbPicUrl = await `http://graph.facebook.com/${store.state.userID}/picture?type=normal`;
     // console.log(await this.fbPicUrl);
     // this.isLogin = await store.state.userID != 0 ? store.state.userID : 0;
-    new FacebookServices().setEnviroment()
+    new FacebookServices().setEnviroment();
   },
   methods: {
     // rePicFb() {
@@ -90,15 +96,15 @@ export default {
     //   // console.log(this.fbPicUrl);
     // },
     loginFb() {
-      new FacebookServices().login()
-    },
+      new FacebookServices().login();
+    }
     // logoutFb() {
     //   new FacebookServices().logout()
     // }
   },
   data: function() {
     return {
-      text: "",
+      text: ""
       // fbPicUrl: "",
       // isLogin: false
     };

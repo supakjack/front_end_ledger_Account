@@ -125,6 +125,7 @@
 
 <script>
 import FacadeServices from "./../services/FacadeServices";
+import $store from "../store/State";
 const axios = new FacadeServices().makeAxios();
 
 export default {
@@ -148,17 +149,9 @@ export default {
     };
   },
   async mounted() {
-    // let personContext = await Person_context;
-    // let personModel = await Person_model;
-    // console.log("<--- debug class --->");
-    // // console.log(personContext);
-    // // console.log(personModel);
-    // await personContext.get_all_person();
-    // console.log(await personContext.persons);
-    // await personContext.persons.map(person => {
-    //   console.log(person);
-    // });
-    // console.log("<--- debug class --->");
+    console.log("facebookId : " + $store.state.facebookId);
+
+    console.log("testState from another component : "+$store.state.testState);
   },
   methods: {
     addTask() {
