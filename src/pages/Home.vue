@@ -122,10 +122,25 @@ export default {
       });
     });
 
-    new chart().makeChart(
-      "myChart",
-      "doughnut",
-      {
+     new axios().getHttp("books/expense/1/now").then(result => {
+      //  console.log(result)
+       result.data.map((item,index)=>{
+         console.log(item.expense)
+          this.expense_today = item.expense
+       })
+     });
+    new axios().getHttp("books/income/1/now").then(result => {
+      //  console.log(result)
+       result.data.map((item,index)=>{
+         console.log(item.income)
+          this.income_today = item.income
+       })
+     });
+
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+      type: "doughnut",
+      data: {
         labels: ["รายจ่าย", "รายรับ"],
         datasets: [
           {
