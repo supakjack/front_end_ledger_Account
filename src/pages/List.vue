@@ -11,7 +11,7 @@
 
     <q-btn-dropdown label="ข้อมูลรายรับ - รายจ่ายในวันที่ 10/03/2020">
       <q-list>
-        <q-item clickable v-close-popup @click="onItemClick()">
+        <q-item clickable >
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -19,12 +19,12 @@
                 <q-img src="https://image.flaticon.com/icons/svg/639/639365.svg" />
               </div>
               <div class="col-5 text-center text-blue" style="font-size:18px">รายรับ</div>
-              <div class="col-5 text-center" style="font-size:18px">{{income}}{{currency}}</div>
+              <div class="col-5 text-center" style="font-size:18px">{{income_today}}{{currency}}</div>
             </div>
           </q-item-section>
         </q-item>
 
-        <q-item clickable v-close-popup @click="onItemClick()">
+        <q-item clickable >
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -41,7 +41,7 @@
 
     <q-btn-dropdown label="ข้อมูลรายรับ - รายจ่ายในวันที่ 09/03/2020">
       <q-list>
-        <q-item clickable v-close-popup @click="onItemClick()">
+        <q-item clickable  >
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -54,7 +54,7 @@
           </q-item-section>
         </q-item>
 
-        <q-item clickable v-close-popup @click="onItemClick()">
+        <q-item clickable  >
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -90,7 +90,7 @@
 
 <script>
 import $store from "../store/State";
-import FacadeServices from "./../services/FacadeServices";
+import FacadeServices from "./../services/FacadeServices"
 const axios = new FacadeServices().makeAxios();
 
 export default {
@@ -109,7 +109,7 @@ export default {
       expense_today: "100.00",
       income: "1000.50",
       income_today: "1000.50",
-      currency: "บาท",
+      currency: " บาท",
       value: 10
     };
   },
