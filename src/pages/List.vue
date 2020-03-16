@@ -109,7 +109,7 @@ export default {
 </script>
 
 <script>
-import Chart from "chart.js";
+import $store from "../store/State";
 
 export default {
   data() {

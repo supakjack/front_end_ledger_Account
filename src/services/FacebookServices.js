@@ -32,7 +32,11 @@ export default class FacebookServices {
           $store.state.facebookId = response.authResponse.userID;
           console.log("facebookId : " + $store.state.facebookId);
           //logic to login with facebook
-
+          /*
+            1. check fb id
+            2. if not exits create authen
+            3. get full state to $state
+          */ 
           //logic to login with facebook
         }
       } else {

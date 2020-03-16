@@ -89,19 +89,18 @@
 </template>
 
 <script>
-import FacebookServices from "./../services/FacebookServices";
+import FacadeServices from "./../services/FacadeServices";
+import $store from "../store/State";
+const facebook = new FacadeServices().makeFacebok();
 
 export default {
   name: "GlobalLayout",
   mounted() {
-    new FacebookServices().setEnviroment();
+    new facebook().setEnviroment();
   },
   methods: {
-    // loginFb() {
-    //   new FacebookServices().login();
-    // },
     logoutFb() {
-      new FacebookServices().logout();
+      new facebook().logout();
     }
   },
   data() {

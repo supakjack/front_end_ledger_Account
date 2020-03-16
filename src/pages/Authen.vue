@@ -73,40 +73,26 @@
 </template>
 
 <script>
-import FacebookServices from "./../services/FacebookServices";
+import FacadeServices from "./../services/FacadeServices";
 import $store from "../store/State";
+const facebook = new FacadeServices().makeFacebok();
+
 export default {
   name: "Authen",
   async mounted() {
     console.log("facebookId : " + $store.state.facebookId);
-
     $store.state.testState = 5678;
     console.log("testState change to 5678 : " + $store.state.testState);
-    //  this.fbPicUrl = await `http://graph.facebook.com/${store.state.userID}/picture?type=normal`;
-    // console.log(await this.fbPicUrl);
-    // this.isLogin = await store.state.userID != 0 ? store.state.userID : 0;
-    new FacebookServices().setEnviroment();
+    new facebook().setEnviroment();
   },
   methods: {
-    // rePicFb() {
-    //   this.isLogin = store.state.userID != 0 ? store.state.userID : 0;
-    // },
-    // checkLoginState() {
-    //   // this.fbPicUrl = `http://graph.facebook.com/${store.state.userID}/picture?type=normal`;
-    //   // console.log(this.fbPicUrl);
-    // },
     loginFb() {
-      new FacebookServices().login();
+      new facebook().login();
     }
-    // logoutFb() {
-    //   new FacebookServices().logout()
-    // }
   },
   data: function() {
     return {
       text: ""
-      // fbPicUrl: "",
-      // isLogin: false
     };
   }
 };

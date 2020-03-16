@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import $store from "../store/State";
 export default {
   name: "Expenses",
   mounted() {

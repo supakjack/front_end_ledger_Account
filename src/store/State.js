@@ -5,10 +5,10 @@ Vue.use(Vuex);
 
 const state = new Vuex.Store({
   state: {
-    authenId: "",
-    facebookId: "",
-    personId: "",
-    testState: ""
+    authenId: null,
+    facebookId: null,
+    personId: null,
+    testState: null
   }
 });
 

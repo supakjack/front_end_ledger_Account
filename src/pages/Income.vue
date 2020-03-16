@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import $store from "../store/State";
 import FacadeServices from "./../services/FacadeServices";
 const axios = new FacadeServices().makeAxios();
 

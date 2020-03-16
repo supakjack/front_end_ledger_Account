@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import $store from "../store/State";
+
 export default {
   name: 'Error404'
 }
