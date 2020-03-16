@@ -108,7 +108,7 @@ export default {
     new axios().getHttp("books/income/1/now").then(result => {
       result.data.map((item, index) => {
         console.log(item);
-        this.total = item.amount;
+        this.income_today = item.income;
       });
     });
   },
