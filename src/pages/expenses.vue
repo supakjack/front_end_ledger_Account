@@ -19,7 +19,7 @@
          <!-- strat select ชื่อรายการ -->
         <q-select outlined v-model="model" :options="options" label="Outlined" /> 
          <!-- end select ชื่อรายการ -->
-
+        <br />
         <!-- strat input ชื่อรายการ -->
         <q-input outlined v-model="listId" label="รายการ" />
         <!-- end input ชื่อรายการ -->
