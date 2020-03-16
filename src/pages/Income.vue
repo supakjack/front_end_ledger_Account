@@ -83,11 +83,6 @@ export default {
         console.log(result);
       });
     },
-    addEx() {
-      alert("Ex service");
-      console.log(home_income);
-      home_income = "expense_service";
-    }
   }
 };
 </script>
