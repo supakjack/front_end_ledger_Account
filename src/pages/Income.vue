@@ -13,33 +13,32 @@
     <!-- end img รายรับ -->
     <br />
   
-   <!-- strat input ชื่อรายการ -->    
-  <template>
-  <div class="q-pa-md" style="max-width: 400px ">
-    <q-btn-dropdown color="primary" label="บัญชี">
-      <q-list>
-        <q-item clickable v-close-popup @click="onItemClick">
-          <q-item-section>
-            <q-item-label>ธนาคาร</q-item-label>
-          </q-item-section>
-        </q-item>
+    <!-- strat input ชื่อรายการ -->    
+    <template>
+    <div class="q-pa-md" style="max-width: 400px ">
+      <q-btn-dropdown color="primary" label="บัญชี">
+        <q-list>
+          <q-item clickable v-close-popup @click="onItemClick">
+            <q-item-section>
+              <q-item-label>ธนาคาร</q-item-label>
+            </q-item-section>
+          </q-item>
 
-        <q-item clickable v-close-popup @click="onItemClick">
-          <q-item-section>
-            <q-item-label>เงินสด</q-item-label>
-          </q-item-section>
-        </q-item>
+          <q-item clickable v-close-popup @click="onItemClick">
+            <q-item-section>
+              <q-item-label>เงินสด</q-item-label>
+            </q-item-section>
+          </q-item>
 
-      </q-list>
-    </q-btn-dropdown>
-  </div>
-</template> 
-<!-- end input ชื่อรายการ -->
+        </q-list>
+      </q-btn-dropdown>
+    </div>
+  </template> 
+  <!-- end input ชื่อรายการ -->
 
     <!-- strat input -->
     <div class="q-pa-md">
       <div class="q-gutter-md" style="max-width: 400px ">
-        <br />
         <!-- strat input ชื่อรายการ -->
         <q-input outlined v-model="listId" label="รายการ" />
         <!-- end input ชื่อรายการ -->
