@@ -32,7 +32,7 @@
                 <q-img src="https://image.flaticon.com/icons/svg/1086/1086741.svg" />
               </div>
               <div class="col-5 text-center text-red" style="font-size:18px">รายจ่าย</div>
-              <div class="col-5 text-center" style="font-size:18px">{{expense}}{{currency}}</div>
+              <div class="col-5 text-center" style="font-size:18px">{{expense_today}}{{currency}}</div>
             </div>
           </q-item-section>
         </q-item>
@@ -101,12 +101,19 @@ export default {
         this.income_today = item.income;
       });
     });
+
+    new axios().getHttp("books/expense/2/now").then(result => {
+      result.data.map((item, index) => {
+        console.log(item);
+        this.expense_today = item.expense;
+      });
+    });
   },
   data() {
     return {
       total: "500.25",
       expense: "100.00",
-      expense_today: "100.00",
+      expense_today: "101.00",
       income: "1000.50",
       income_today: "1000.50",
       currency: " บาท",
