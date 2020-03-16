@@ -17,8 +17,7 @@
               <q-item-label></q-item-label>
               <div class="col-1">
                 <q-img
-                  src="https://lh3.googleusercontent.com/proxy/eBHN96qawDXZoVj02USh-syljsjuHein5cNu9wH7FrimxI1hSc4zoa5Yrs7-WvJ2dd1LhgHQz3M5LMwydVEgh_NeK0xojvsxe-i_9dTWHjnRG8j2jhYYFO592Ax1UW9gvwMUzvTj-OOSriXJs5B4SwOJUSpfCKR3nD_EoPjO_JCJZiyvvg"
-                />
+                  src="https://lh3.googleusercontent.com/proxy/eBHN96qawDXZoVj02USh-syljsjuHein5cNu9wH7FrimxI1hSc4zoa5Yrs7-WvJ2dd1LhgHQz3M5LMwydVEgh_NeK0xojvsxe-i_9dTWHjnRG8j2jhYYFO592Ax1UW9gvwMUzvTj-OOSriXJs5B4SwOJUSpfCKR3nD_EoPjO_JCJZiyvvg"/>
               </div>
               <div class="col-5 text-center">รายรับ</div>
               <div class="col-5 text-center">1000.50 บาท</div>
