@@ -17,7 +17,7 @@
     <div class="q-pa-md">
       <div class="q-gutter-md" style="max-width: 400px">
          <!-- strat select ชื่อรายการ -->
-        <q-select outlined v-model="model" :options="options" label="Outlined" /> 
+        <q-select outlined v-model="model" :options="options" label="บัญชี" /> 
          <!-- end select ชื่อรายการ -->
         <br />
         <!-- strat input ชื่อรายการ -->
