@@ -19,7 +19,7 @@
                 <q-img src="https://image.flaticon.com/icons/svg/639/639365.svg" />
               </div>
               <div class="col-5 text-center text-blue" style="font-size:18px">รายรับ</div>
-              <div class="col-5 text-center" style="font-size:18px">{{income}}{{currency}}</div>
+              <div class="col-5 text-center" style="font-size:18px">{{income_today}}{{currency}}</div>
             </div>
           </q-item-section>
         </q-item>
@@ -109,7 +109,7 @@ export default {
       expense_today: "100.00",
       income: "1000.50",
       income_today: "1000.50",
-      currency: "บาท",
+      currency: " บาท",
       value: 10
     };
   },
