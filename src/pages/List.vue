@@ -11,7 +11,7 @@
 
     <q-btn-dropdown label="ข้อมูลรายรับ - รายจ่ายในวันที่ 10/03/2020">
       <q-list>
-        <q-item clickable v-close-popup @click="onItemClick()">
+        <q-item clickable >
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -24,7 +24,7 @@
           </q-item-section>
         </q-item>
 
-        <q-item clickable v-close-popup @click="onItemClick()">
+        <q-item clickable >
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -41,7 +41,7 @@
 
     <q-btn-dropdown label="ข้อมูลรายรับ - รายจ่ายในวันที่ 09/03/2020">
       <q-list>
-        <q-item clickable v-close-popup @click="onItemClick()">
+        <q-item clickable  >
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -54,7 +54,7 @@
           </q-item-section>
         </q-item>
 
-        <q-item clickable v-close-popup @click="onItemClick()">
+        <q-item clickable  >
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -91,7 +91,6 @@
 <script>
 import $store from "../store/State";
 import FacadeServices from "./../services/FacadeServices";
-const axios = new FacadeServices().makeAxios();
 
 export default {
   mounted() {
