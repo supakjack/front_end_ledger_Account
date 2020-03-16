@@ -110,14 +110,14 @@ export default {
       })
     });
 
-     new axios().getHttp("books/expense/1/now").then(result => {
+     new axios().getHttp("books/expense/2/now").then(result => {
       //  console.log(result)
        result.data.map((item,index)=>{
          console.log(item.expense)
           this.expense_today = item.expense
        })
      });
-    new axios().getHttp("books/income/1/now").then(result => {
+    new axios().getHttp("books/income/2/now").then(result => {
       //  console.log(result)
        result.data.map((item,index)=>{
          console.log(item.income)
