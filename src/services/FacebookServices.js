@@ -1,9 +1,6 @@
-import { default as Vuex } from "./../store/State";
+import $store from "../store/State";
+
 export default class FacebookServices {
-  #store;
-  constructor() {
-    this.#store = Vuex;
-  }
   setEnviroment() {
     window.fbAsyncInit = function() {
       FB.init({
@@ -32,25 +29,18 @@ export default class FacebookServices {
     FB.login(function(response) {
       if (response.status === "connected") {
         if (response.status === "connected") {
-          this.#store.commit(
-            "setAccessToken",
-            response.authResponse.accessToken
-          );
-          console.log(this.#store.state.accessToken);
-          this.#store.commit("setUserID", response.authResponse.userID);
-          console.log(this.#store.state.userID);
-          console.log(response);
-          this.#store.commit("setUserID", response.authResponse.userID);
-          // this.fbPicUrl = `http://graph.facebook.com/${response.authResponse.userID}/picture?type=normal`;
-          // console.log(this.fbPicUrl);
-          // this.mounted();
-          //
-          //
+          $store.state.facebookId = response.authResponse.userID;
+          console.log("facebookId : " + $store.state.facebookId);
+          //logic to login with facebook
+          /*
+            1. check fb id
+            2. if not exits create authen
+            3. get full state to $state
+          */ 
+          //logic to login with facebook
         }
       } else {
         console.log("fail");
-
-        // The person is not logged into your webpage or we are unable to tell.
       }
     });
   }
@@ -60,4 +50,3 @@ export default class FacebookServices {
     });
   }
 }
- 
