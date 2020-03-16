@@ -110,7 +110,7 @@ export default {
       })
     });
 
-     new axios().getHttp("books/expense/2/now").then(result => {
+     new axios().getHttp("books/expense//now").then(result => {
       //  console.log(result)
        result.data.map((item,index)=>{
          console.log(item.expense)
