@@ -110,19 +110,20 @@ export default {
       })
     });
 
-    // new axios().getHttp("books/expense_today/2").then(result => {
-    //   result.data.map((item,index)=>{
-    //     console.log(item)
-    //     this.expense_today = item.expense_today
-    //   })
-    // });
-
-    // new axios().getHttp("books/income_today/2").then(result => {
-    //   result.data.map((item,index)=>{
-    //     console.log(item)
-    //     this.income_today = item.income_today
-    //   })
-    // });
+     new axios().getHttp("books/expense/1/now").then(result => {
+      //  console.log(result)
+       result.data.map((item,index)=>{
+         console.log(item.expense)
+          this.expense_today = item.expense
+       })
+     });
+    new axios().getHttp("books/income/1/now").then(result => {
+      //  console.log(result)
+       result.data.map((item,index)=>{
+         console.log(item.income)
+          this.income_today = item.income
+       })
+     });
 
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
