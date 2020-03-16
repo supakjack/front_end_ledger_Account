@@ -90,7 +90,8 @@
 
 <script>
 import $store from "../store/State";
-import FacadeServices from "./../services/FacadeServices";
+import FacadeServices from "./../services/FacadeServices"
+const axios = new FacadeServices().makeAxios();
 
 export default {
   mounted() {
