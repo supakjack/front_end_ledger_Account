@@ -66,7 +66,7 @@
             <br />
           </q-card-section>
           <div  class="q-pa-md" style="max-width: 1500px">    
-          <q-btn color="green" label="ยืนยัน" style="width: 100%" />
+          <q-btn color="green" label="บันทึก" style="width: 100%" />
           </div>
 
           <div class="q-pa-md" style="max-width: 1500px">
