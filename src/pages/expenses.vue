@@ -34,7 +34,7 @@
     <!-- strat ปุ่มบันทึก  -->
     <div class="q-pa-md q-gutter-sm">
       <center>
-        <q-btn @click="addEx()" color="secondary" label="บันทีก" />
+        <q-btn @click="addEx()" exact to="/Home" color="secondary" label="บันทีก" />
       </center>
     </div>
     <!-- end ปุ่มบันทึก  -->
