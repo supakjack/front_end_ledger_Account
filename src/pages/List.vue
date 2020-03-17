@@ -165,6 +165,48 @@ export default {
       }
       console.log(this.list_data);
     });
+
+    new axios().getHttp("books/1").then(result => {
+      this.list_list = [];
+      // this.id_lists = [];
+      //
+      result.data.map((item, index) => {
+        this.list_list.push(item);
+        // this.id_lists.push(item.lab_id);
+        // console.log(this.id_lists);
+      });
+
+      let tmpList_list = [];
+      console.log(tmpList_list);
+      for (let i = 0; i < this.list_list.length; i++) {
+        if (i > 0) {
+          tmpList_list.push(this.list_list[i]);
+          let check = 0;
+
+          for (let j = 0; j < tmpList_list.length; j++) {
+            if (tmpList_list[j].lab_id == this.list_list[i].lab_id) {
+              console.log("<--->");
+              console.log(
+                "  this.list_list[i].lab_id : " + this.list_list[i].lab_id
+              );
+              console.log(
+                "  tmpList_list[j].lab_id  : " + tmpList_list[j].lab_id
+              );
+              check++;
+              console.log("<--->");
+            }
+          }
+          if (check > 1) {
+            tmpList_list.splice(tmpList_list.length - 1, 1);
+          }
+        } else {
+          tmpList_list.push(this.list_list[i]);
+        }
+      }
+      this.list_list = tmpList_list;
+      //
+    });
+    //
   },
   data() {
     return {

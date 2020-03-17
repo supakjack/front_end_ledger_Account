@@ -260,7 +260,7 @@ export default {
           this.$q.notify("Task delete");
           new axios().deleteHttp("books/" + id).then(result => {
             console.log(result);
-            this.initValue();
+            this.inquitValue();
           });
         });
     }
