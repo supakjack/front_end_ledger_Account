@@ -17,7 +17,7 @@
     <div class="q-pa-md">
       <div class="q-gutter-md" style="max-width: 400px">
          <!-- strat select ชื่อรายการ -->
-        <q-select outlined v-model="model" :options="options" label="บัญชี" /> 
+        <q-select outlined v-model="bookId" :options="options" label="บัญชี" /> 
          <!-- end select ชื่อรายการ -->
         <br />
         <!-- strat input ชื่อรายการ -->
@@ -66,19 +66,19 @@ export default {
       currencyLabels: "",
       model: null,
       options: [
-        'ธนาคาร', 'เงินสด'
+        '2', '5'
       ]
     };
   },
   methods: {
     addEx() {
-       let expense = {
+       let expense_to_list = {
         id: this.bookId,
         descript: this.listId,
         money: this.money
       };
-       console.log(expense);
-      new axios().postHttp("lists/expense", expense).then(result => {
+       console.log(expense_to_list);
+      new axios().postHttp("lists/expense", expense_to_list).then(result => {
         console.log(result);
         });
     }
