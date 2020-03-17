@@ -39,7 +39,7 @@
       </q-item>
     </q-list>
 
-    <div class="q-pa-md" style="width: 100%">
+    <div class="q-pa-md" style="width: 100%" v-for="(item, index) in id_books" :key="index">
       <!-- <q-toggle v-model="expanded" label="Expanded" class="q-mb-md" /> -->
 
       <q-expansion-item
@@ -65,8 +65,8 @@
 
             <br />
           </q-card-section>
-          <div  class="q-pa-md" style="max-width: 1500px">    
-          <q-btn color="green" label="บันทึก" style="width: 100%" />
+          <div class="q-pa-md" style="max-width: 1500px">
+            <q-btn color="green" label="บันทึก" style="width: 100%" />
           </div>
 
           <div class="q-pa-md" style="max-width: 1500px">
@@ -139,8 +139,11 @@ export default {
       Total_money_regis: " ",
       medium: false,
       Total_money: "1000.50",
+      list_book: [],
       expanded: false,
+      book_names: [],
       newTask: "",
+      id_books: ["1", "2"],
       tasks: [
         // { title: "Get bananas", done: false },
         // { title: "Eat bananas", done: false },
@@ -151,9 +154,26 @@ export default {
   async mounted() {
     console.log("facebookId : " + $store.state.facebookId);
 
-    console.log("testState from another component : "+$store.state.testState);
+    console.log("testState from another component : " + $store.state.testState);
+    // 
+    new axios().getHttp("books/1").then(result => {
+      this.list_book = [];
+      this.id_books = [];
+      //
+      result.data.map((item, index) => {
+        this.list_book.push(item);
+        this.id_books.push(item.lab_id);
+        console.log(this.id_books);
+      });
+      //
+      this.cleanList();
+    });
+    //
   },
   methods: {
+    cleanList() {
+      this.id_books = Array.from(new Set(this.id_books));
+    },
     addTask() {
       this.tasks.push({
         title: this.newTask,
