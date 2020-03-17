@@ -106,7 +106,7 @@
           <q-card-actions align="right" class="bg-white text-teal">
             <q-btn
               @click="add_acount()"
-              color="primary"
+              color="green"
               label="ตกลง"
               style="width: 100%"
               v-close-popup
