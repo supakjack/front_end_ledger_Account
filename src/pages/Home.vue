@@ -50,11 +50,8 @@
             <div style="font-size:25px">local_grocery_store</div>
           </i>รายจ่าย
           <span style="float:right;">
-            if($expense_today == 0){
-              <p align="right">{{expense_today}} {{currency}}</p>
-            }else{
-              <p align="right">0 {{currency}}</p>
-            }
+              <p align="right" v-if="expense_today == null">0 {{currency}}</p>
+              <p align="right" v-else>{{expense_today}} {{currency}}</p>
           </span>
         </p>
       </q-banner>
@@ -64,7 +61,8 @@
             <div style="font-size:25px">local_atm</div>
           </i>รายรับ
           <span style="float:right;">
-            <p align="right">{{income_today}} {{currency}}</p>
+            <p align="right" v-if="income_today == null">0 {{currency}}</p>
+            <p align="right" v-else>{{income_today}} {{currency}}</p>
           </span>
         </p>
       </q-banner>
