@@ -49,7 +49,7 @@
                 <q-img src="https://image.flaticon.com/icons/svg/639/639365.svg" />
               </div>
               <div class="col-5 text-center text-blue" style="font-size:18px">รายรับ</div>
-              <div class="col-5 text-center" style="font-size:18px">{{income}}{{currency}}</div>
+              <div class="col-5 text-center" style="font-size:18px">{{income_today}}{{currency}}</div>
             </div>
           </q-item-section>
         </q-item>
@@ -62,7 +62,7 @@
                 <q-img src="https://image.flaticon.com/icons/svg/1086/1086741.svg" />
               </div>
               <div class="col-5 text-center text-red" style="font-size:18px">รายจ่าย</div>
-              <div class="col-5 text-center" style="font-size:18px">{{expense}}{{currency}}</div>
+              <div class="col-5 text-center" style="font-size:18px">{{expense_today}}{{currency}}</div>
             </div>
           </q-item-section>
         </q-item>
@@ -95,19 +95,28 @@ const axios = new FacadeServices().makeAxios();
 
 export default {
   mounted() {
-    new axios().getHttp("books/income/1/now").then(result => {
+    new axios().getHttp("books/income/2/now").then(result => {
       result.data.map((item, index) => {
         console.log(item);
         this.income_today = item.income;
       });
     });
 
-    new axios().getHttp("books/expense/1/now").then(result => {
+    new axios().getHttp("books/expense/2/now").then(result => {
       result.data.map((item, index) => {
         console.log(item);
         this.expense_today = item.expense;
       });
     });
+
+    new axios().getHttp("books/1").then(result => {
+      result.data.map((item, index) => {
+        console.log(item);
+        this.list_data = item
+        
+      });
+    });
+
   },
   data() {
     return {
@@ -117,6 +126,7 @@ export default {
       income: "1000.50",
       income_today: "1000.50",
       currency: " บาท",
+      list_data: "",
       value: 10
     };
   },
