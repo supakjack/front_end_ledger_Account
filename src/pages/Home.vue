@@ -82,10 +82,10 @@ const axios = new FacadeServices().makeAxios();
 export default {
   name: "Home",
   mounted() {
-    console.log("facebookId : " + $store.state.facebookId);
+    // console.log("facebookId : " + $store.state.facebookId);
 
-    $store.state.testState = 12345;
-    console.log("testState change to 12345 : " + $store.state.testState);
+    // $store.state.testState = 12345;
+    // console.log("testState change to 12345 : " + $store.state.testState);
 
     new axios().getHttp("books/amount/5").then(result => {
       result.data.map((item, index) => {
@@ -114,7 +114,7 @@ export default {
       })
     });
 
-     new axios().getHttp("books/expense//now").then(result => {
+     new axios().getHttp("books/expense/2/now").then(result => {
       //  console.log(result)
        result.data.map((item,index)=>{
          console.log(item.expense)
@@ -137,7 +137,7 @@ export default {
         datasets: [
           {
             label: "# of Votes",
-            data: [100, 1000.5],
+            data: [this.expense, this.income],
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
               "rgba(54, 162, 235, 0.2)"
