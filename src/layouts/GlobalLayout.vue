@@ -73,8 +73,8 @@
             <img src="statics/icons/cat3.png" />
           </q-avatar>
           <div class="column justify-center">
-            <div class="text-weight-bold">1 บัญชี</div>
-            <div class="text-weight-bold">1000.50 บาท</div>
+            <div class="text-weight-bold">{{this.check_number}} บัญชี</div>
+            <div class="text-weight-bold">{{total}} {{currency}}</div>
           </div>
         </div>
         <!-- </div> -->
@@ -91,12 +91,65 @@
 <script>
 import FacadeServices from "./../services/FacadeServices";
 import $store from "../store/State";
+const axios = new FacadeServices().makeAxios();
 const facebook = new FacadeServices().makeFacebok();
 
 export default {
   name: "GlobalLayout",
   mounted() {
     new facebook().setEnviroment();
+
+    new axios().getHttp("books/amount/5").then(result => {
+      result.data.map((item, index) => {
+        console.log(item);
+        this.total = item.amount;
+      });
+    });
+
+    new axios().getHttp("books/1").then(result => {
+      this.list_book = [];
+      // this.id_books = [];
+      //
+      result.data.map((item, index) => {
+        this.list_book.push(item);
+        // this.id_books.push(item.lab_id);
+        // console.log(this.id_books);
+      });
+      //
+      // this.cleanList();
+      //
+      let tmpList_book = [];
+      console.log(tmpList_book);
+      for (let i = 0; i < this.list_book.length; i++) {
+        if (i > 0) {
+          tmpList_book.push(this.list_book[i]);
+          let check = 0;
+
+          for (let j = 0; j < tmpList_book.length; j++) {
+            if (tmpList_book[j].lab_id == this.list_book[i].lab_id) {
+              console.log("<--->");
+              console.log(
+                "  this.list_book[i].lab_id : " + this.list_book[i].lab_id
+              );
+              console.log(
+                "  tmpList_book[j].lab_id  : " + tmpList_book[j].lab_id
+              );
+              check++;
+              console.log("<--->");
+            }
+          }
+          if (check > 1) {
+            tmpList_book.splice(tmpList_book.length - 1, 1);
+          }
+        } else {
+          tmpList_book.push(this.list_book[i]);
+        }
+      }
+      this.list_book = tmpList_book;
+      this.check_number = this.list_book.length;
+      // console.log(this.list_book.length );
+      //
+    });
   },
   methods: {
     logoutFb() {
@@ -105,7 +158,10 @@ export default {
   },
   data() {
     return {
-      leftDrawerOpen: true
+      leftDrawerOpen: true,
+      total: "1000.50",
+      currency: "บาท",
+      check_number: 0
     };
   }
 };
