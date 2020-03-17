@@ -82,12 +82,16 @@ const axios = new FacadeServices().makeAxios();
 export default {
   name: "Home",
   mounted() {
-    
-    new axios().getHttp("books/amount/2").then(result => {
-      result.data.map((item,index)=>{
-        console.log(item)
-        this.total = item.amount
-      })
+    console.log("facebookId : " + $store.state.facebookId);
+
+    $store.state.testState = 12345;
+    console.log("testState change to 12345 : " + $store.state.testState);
+
+    new axios().getHttp("books/amount/5").then(result => {
+      result.data.map((item, index) => {
+        console.log(item);
+        this.total = item.amount;
+      });
     });
 
     new axios().getHttp("books/currency/2").then(result => {

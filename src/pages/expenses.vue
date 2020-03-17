@@ -34,7 +34,7 @@
     <!-- strat ปุ่มบันทึก  -->
     <div class="q-pa-md q-gutter-sm">
       <center>
-        <q-btn color="secondary" label="บันทีก" />
+        <q-btn @click="addEx()" color="secondary" label="บันทีก" />
       </center>
     </div>
     <!-- end ปุ่มบันทึก  -->
@@ -43,6 +43,8 @@
 
 <script>
 import $store from "../store/State";
+import FacadeServices from "./../services/FacadeServices";
+const axios = new FacadeServices().makeAxios();
 export default {
   name: "Expenses",
   mounted() {
@@ -69,15 +71,16 @@ export default {
     };
   },
   methods: {
-    addIn() {
-      alert("income service");
-      console.log(home_income);
-      home_income = "income_service";
-    },
     addEx() {
-      alert("Ex service");
-      console.log(home_income);
-      home_income = "expense_service";
+       let expense = {
+        id: this.bookId,
+        descript: this.listId,
+        money: this.money
+      };
+       console.log(expense);
+      new axios().postHttp("lists/expense", expense).then(result => {
+        console.log(result);
+        });
     }
   }
 };

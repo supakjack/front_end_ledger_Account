@@ -88,7 +88,7 @@ export default {
         console.log(result);
       
       });
-    },
+    }
   }
 };
 </script>
