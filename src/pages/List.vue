@@ -102,7 +102,7 @@ export default {
       });
     });
 
-    new axios().getHttp("books/expense/2/now").then(result => {
+    new axios().getHttp("books/expense/1/now").then(result => {
       result.data.map((item, index) => {
         console.log(item);
         this.expense_today = item.expense;
