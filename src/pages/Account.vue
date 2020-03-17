@@ -70,7 +70,7 @@
           </div>
 
           <div class="q-pa-md" style="max-width: 1500px">
-            <q-btn color="red" label="ยกเลิก" style="width: 100%" />
+            <q-btn color="red" label="ลบ" style="width: 100%" />
           </div>
         </q-card>
       </q-expansion-item>
