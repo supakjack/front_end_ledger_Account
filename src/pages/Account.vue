@@ -53,15 +53,20 @@
             <q-item-section>รายละเอียดบัญชี</q-item-section>
             <br />
             <q-input filled v-model="list_book[index].lab_name" label="ชื่อบัญชี" />
-            <br />
-            <q-input filled type="text" v-model="list_book[index].lab_currency" label="สกุลเงิน" />
+            <!-- <br /> -->
+            <!-- <q-input filled type="text" v-model="list_book[index].lab_currency" label="สกุลเงิน" /> -->
 
-            <br />
-            <br />
+            <!-- <br /> -->
+            <!-- <br /> -->
 
-            <q-item-section>ประเภทบัญชี เงินสด</q-item-section>
+            <!-- <q-item-section>ประเภทบัญชี เงินสด</q-item-section>
             <br />
-            <q-input filled type="number" v-model="list_book[index].lab_amount" label="ยอดเงินคงเหลือ" />
+            <q-input
+              filled
+              type="number"
+              v-model="list_book[index].lab_amount"
+              label="ยอดเงินคงเหลือ"
+            /> -->
 
             <br />
           </q-card-section>
@@ -70,7 +75,7 @@
           </div>
 
           <div class="q-pa-md" style="max-width: 1500px">
-            <q-btn color="red" label="ลบ" style="width: 100%" />
+            <q-btn @click="deleteTask(index)" color="red" label="ลบ" style="width: 100%" />
           </div>
         </q-card>
       </q-expansion-item>
@@ -267,6 +272,10 @@ export default {
           this.tasks.splice(index, 1);
           this.$q.notify("Task delete");
         });
+      new axios().postHttp("books/8").then(result => {
+        console.log(result);
+      });
+      this.mounted;
     }
   }
 };
