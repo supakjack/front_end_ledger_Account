@@ -27,85 +27,54 @@
         v-ripple
         :class="{'done bg-blue-1':task.done}"
       >
-        <!-- <q-item-section avatar>
+        <q-item-section avatar>
           <q-checkbox class="no-pointer-events" v-model="task.done" val="teal" color="teal" />
-        </q-item-section> -->
-          <!-- <q-item-label> -->
-<div class="q-pa-md" style="width: 100%">
-              <q-expansion-item
-        v-model="expanded"
-        icon="monetization_on"
-        label="เงินสด"
-        caption="1000.50 บาท"
-      >
-          <q-card-section>
-            <q-item-section>รายละเอียดบัญชี</q-item-section>
-            <br />
-            <q-input filled v-model="name" label="ชื่อบัญชี" />
-            <br />
-            <q-input filled type="text" v-model="money" label="สกุลเงิน" />
-
-            <br />
-            <br />
-
-            <q-item-section>ประเภทบัญชี เงินสด</q-item-section>
-            <br />
-            <q-input filled type="number" v-model="Total_money" label="ยอดเงินคงเหลือ" />
-
-            <br />
-          </q-card-section>
-          <!-- <div  class="q-pa-md" style="max-width: 1500px">    
-          <q-btn color="primary" label="ยืนยัน" style="width: 100%" />
-          </div>-->
-
-          <div class="q-pa-md" style="max-width: 1500px">
-            <q-btn  @click.stop="deleteTask(index)" color="red" label="ยกเลิก" style="width: 100%" />
-          </div>
-          </q-expansion-item>
-          </div>
-      
-
-
-          <!-- </q-item-label> -->
+        </q-item-section>
+        <q-item-section>
+          <q-item-label>{{task.title}}</q-item-label>
+        </q-item-section>
         <q-item-section v-if="task.done">
           <q-btn @click.stop="deleteTask(index)" flat round color="primary" icon="card_giftcard" />
         </q-item-section>
       </q-item>
     </q-list>
 
-    <div class="q-pa-md" style="width: 100%" v-for="(item, index) in id_books" :key="index">
+    <div class="q-pa-md" style="width: 100%" v-for="(item, index) in list_book" :key="index">
       <!-- <q-toggle v-model="expanded" label="Expanded" class="q-mb-md" /> -->
 
       <q-expansion-item
         v-model="expanded"
         icon="monetization_on"
-        label="เงินสด"
-        caption="1000.50 บาท"
+        v-bind:label="list_book[index].lab_name"
+        v-bind:caption="list_book[index].lab_amount+' '+list_book[index].lab_currency"
       >
         <q-card>
           <q-card-section>
             <q-item-section>รายละเอียดบัญชี</q-item-section>
             <br />
-            <q-input filled v-model="name" label="ชื่อบัญชี" />
+            <q-input filled v-model="list_book[index].lab_name" label="ชื่อบัญชี" />
             <br />
-            <q-input filled type="text" v-model="money" label="สกุลเงิน" />
+            <q-input filled type="text" v-model="list_book[index].lab_currency" label="สกุลเงิน" />
 
             <br />
             <br />
 
             <q-item-section>ประเภทบัญชี เงินสด</q-item-section>
             <br />
-            <q-input filled type="number" v-model="Total_money" label="ยอดเงินคงเหลือ" />
+            <q-input filled type="number" v-model="list_book[index].lab_amount" label="ยอดเงินคงเหลือ" />
 
             <br />
           </q-card-section>
+          <div class="q-pa-md" style="max-width: 1500px">
+            <q-btn color="green" label="บันทึก" style="width: 100%" />
+          </div>
 
           <div class="q-pa-md" style="max-width: 1500px">
-            <q-btn  color="red" label="ยกเลิก" style="width: 100%" />
+            <q-btn color="red" label="ลบ" style="width: 100%" />
           </div>
         </q-card>
       </q-expansion-item>
-    </div> -->
+    </div>
 
     <!-- end tab 1  -->
     <div class="q-pa-md q-gutter-sm" style="max-width: 1500px; margin-top :400px; ">
@@ -136,8 +105,8 @@
 
           <q-card-actions align="right" class="bg-white text-teal">
             <q-btn
-              @click="add_acount(),addTask()"
-              color="primary"
+              @click="add_acount()"
+              color="green"
               label="ตกลง"
               style="width: 100%"
               v-close-popup
@@ -174,7 +143,7 @@ export default {
       expanded: false,
       book_names: [],
       newTask: "",
-      id_books: ["1", "2"],
+      // id_books: [],
       tasks: [
         // { title: "Get bananas", done: false },
         // { title: "Eat bananas", done: false },
@@ -186,25 +155,86 @@ export default {
     console.log("facebookId : " + $store.state.facebookId);
 
     console.log("testState from another component : " + $store.state.testState);
-    // 
+    //
     new axios().getHttp("books/1").then(result => {
       this.list_book = [];
-      this.id_books = [];
+      // this.id_books = [];
       //
       result.data.map((item, index) => {
         this.list_book.push(item);
-        this.id_books.push(item.lab_id);
-        console.log(this.id_books);
+        // this.id_books.push(item.lab_id);
+        // console.log(this.id_books);
       });
       //
-      this.cleanList();
+      // this.cleanList();
+      //
+      let tmpList_book = [];
+      console.log(tmpList_book);
+      for (let i = 0; i < this.list_book.length; i++) {
+        if (i > 0) {
+          tmpList_book.push(this.list_book[i]);
+          let check = 0;
+
+          for (let j = 0; j < tmpList_book.length; j++) {
+            if (tmpList_book[j].lab_id == this.list_book[i].lab_id) {
+              console.log("<--->");
+              console.log(
+                "  this.list_book[i].lab_id : " + this.list_book[i].lab_id
+              );
+              console.log(
+                "  tmpList_book[j].lab_id  : " + tmpList_book[j].lab_id
+              );
+              check++;
+              console.log("<--->");
+            }
+          }
+          if (check > 1) {
+            tmpList_book.splice(tmpList_book.length - 1, 1);
+          }
+        } else {
+          tmpList_book.push(this.list_book[i]);
+        }
+      }
+      this.list_book = tmpList_book;
+      //
     });
     //
   },
   methods: {
-    cleanList() {
-      this.id_books = Array.from(new Set(this.id_books));
-    },
+    // cleanList() {
+    //   this.id_books = Array.from(new Set(this.id_books));
+    //   // let tmpList_book = [];
+    //   // console.log(tmpList_book);
+    //   // for (let i = 0; i < this.list_book.length; i++) {
+    //   //   if (i > 0) {
+    //   //     tmpList_book.push(this.list_book[i]);
+    //   //     let check = 0;
+
+    //   //     for (let j = 0; j < tmpList_book.length; j++) {
+    //   //       if (tmpList_book[j].lab_id == this.list_book[i].lab_id) {
+    //   //         console.log("<--->");
+    //   //         console.log(
+    //   //           "  this.list_book[i].lab_id : " + this.list_book[i].lab_id
+    //   //         );
+    //   //         console.log(
+    //   //           "  tmpList_book[j].lab_id  : " + tmpList_book[j].lab_id
+    //   //         );
+    //   //         check++;
+    //   //         console.log("<--->");
+    //   //       }
+    //   //     }
+    //   //     if (check > 1) {
+    //   //       tmpList_book.splice(tmpList_book.length - 1, 1);
+    //   //     }
+    //   //   } else {
+    //   //     tmpList_book.push(this.list_book[i]);
+    //   //   }
+    //   // }
+    //   console.log(tmpList_book);
+    // },
+    // getAmount(id) {
+    //   return id;
+    // },
     addTask() {
       this.tasks.push({
         title: this.newTask,
@@ -212,7 +242,6 @@ export default {
       });
       this.newTask = "";
     },
-
     add_acount() {
       let new_acount = {
         name: this.name_regis,
@@ -226,7 +255,6 @@ export default {
       });
       this.mounted;
     },
-
     deleteTask(index) {
       this.$q
         .dialog({
