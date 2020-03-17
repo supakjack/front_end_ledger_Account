@@ -54,19 +54,31 @@
             <br />
             <q-input filled v-model="list_book[index].lab_name" label="ชื่อบัญชี" />
             <br />
-            <q-input readonly filled type="text" v-model="list_book[index].lab_currency" label="สกุลเงิน" />
+            <q-input
+              readonly
+              filled
+              type="text"
+              v-model="list_book[index].lab_currency"
+              label="สกุลเงิน"
+            />
 
             <br />
             <br />
 
             <q-item-section>ประเภทบัญชี เงินสด</q-item-section>
             <br />
-            <q-input readonly filled type="number" v-model="list_book[index].lab_amount" label="ยอดเงินคงเหลือ" />
+            <q-input
+              readonly
+              filled
+              type="number"
+              v-model="list_book[index].lab_amount"
+              label="ยอดเงินคงเหลือ"
+            />
 
             <br />
           </q-card-section>
           <div class="q-pa-md" style="max-width: 1500px">
-            <q-btn color="green" label="บันทึก" style="width: 100%" />
+            <q-btn @click="saveBook(list_book[index].lab_id,list_book[index].lab_name)" color="green" label="บันทึก" style="width: 100%" />
           </div>
 
           <div class="q-pa-md" style="max-width: 1500px">
@@ -201,40 +213,14 @@ export default {
     //
   },
   methods: {
-    // cleanList() {
-    //   this.id_books = Array.from(new Set(this.id_books));
-    //   // let tmpList_book = [];
-    //   // console.log(tmpList_book);
-    //   // for (let i = 0; i < this.list_book.length; i++) {
-    //   //   if (i > 0) {
-    //   //     tmpList_book.push(this.list_book[i]);
-    //   //     let check = 0;
-
-    //   //     for (let j = 0; j < tmpList_book.length; j++) {
-    //   //       if (tmpList_book[j].lab_id == this.list_book[i].lab_id) {
-    //   //         console.log("<--->");
-    //   //         console.log(
-    //   //           "  this.list_book[i].lab_id : " + this.list_book[i].lab_id
-    //   //         );
-    //   //         console.log(
-    //   //           "  tmpList_book[j].lab_id  : " + tmpList_book[j].lab_id
-    //   //         );
-    //   //         check++;
-    //   //         console.log("<--->");
-    //   //       }
-    //   //     }
-    //   //     if (check > 1) {
-    //   //       tmpList_book.splice(tmpList_book.length - 1, 1);
-    //   //     }
-    //   //   } else {
-    //   //     tmpList_book.push(this.list_book[i]);
-    //   //   }
-    //   // }
-    //   console.log(tmpList_book);
-    // },
-    // getAmount(id) {
-    //   return id;
-    // },
+    saveBook(id, nameBook) {
+      new axios().putHttp("books/" + id, { name: nameBook }).then(result => {
+        //
+        console.log(result);
+        this.mounted;
+        //
+      });
+    },
     addTask() {
       this.tasks.push({
         title: this.newTask,
