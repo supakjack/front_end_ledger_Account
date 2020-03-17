@@ -120,12 +120,12 @@ export default {
   },
   data() {
     return {
-      total: "500.25",
-      expense: "100.00",
-      expense_today: "101.00",
-      income: "1000.50",
-      income_today: "1000.50",
-      currency: " บาท",
+      total: "0",
+      expense: "0",
+      expense_today: "0",
+      income: "0",
+      income_today: "0",
+      currency: " ",
       list_data: "",
       value: 10
     };
