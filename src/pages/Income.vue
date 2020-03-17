@@ -78,11 +78,6 @@ export default {
       new axios().postHttp("lists/income", income).then(result => {
         console.log(result);
       });
-    },
-    addEx() {
-      alert("Ex service");
-      console.log(home_income);
-      home_income = "expense_service";
     }
   }
 };
