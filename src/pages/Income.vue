@@ -65,7 +65,7 @@ export default {
       listId: "",
       money: "",
       currencyLabels: "",
-       model: null,
+      model: null,
       options: [
         '2', '5'
       ]
