@@ -27,12 +27,46 @@
         v-ripple
         :class="{'done bg-blue-1':task.done}"
       >
-        <q-item-section avatar>
+        <!-- <q-item-section avatar>
           <q-checkbox class="no-pointer-events" v-model="task.done" val="teal" color="teal" />
-        </q-item-section>
-        <q-item-section>
-          <q-item-label>{{task.title}}</q-item-label>
-        </q-item-section>
+        </q-item-section> -->
+          <!-- <q-item-label> -->
+<div class="q-pa-md" style="width: 100%">
+              <q-expansion-item
+        v-model="expanded"
+        icon="monetization_on"
+        label="เงินสด"
+        caption="1000.50 บาท"
+      >
+          <q-card-section>
+            <q-item-section>รายละเอียดบัญชี</q-item-section>
+            <br />
+            <q-input filled v-model="name" label="ชื่อบัญชี" />
+            <br />
+            <q-input filled type="text" v-model="money" label="สกุลเงิน" />
+
+            <br />
+            <br />
+
+            <q-item-section>ประเภทบัญชี เงินสด</q-item-section>
+            <br />
+            <q-input filled type="number" v-model="Total_money" label="ยอดเงินคงเหลือ" />
+
+            <br />
+          </q-card-section>
+          <!-- <div  class="q-pa-md" style="max-width: 1500px">    
+          <q-btn color="primary" label="ยืนยัน" style="width: 100%" />
+          </div>-->
+
+          <div class="q-pa-md" style="max-width: 1500px">
+            <q-btn  @click.stop="deleteTask(index)" color="red" label="ยกเลิก" style="width: 100%" />
+          </div>
+          </q-expansion-item>
+          </div>
+      
+
+
+          <!-- </q-item-label> -->
         <q-item-section v-if="task.done">
           <q-btn @click.stop="deleteTask(index)" flat round color="primary" icon="card_giftcard" />
         </q-item-section>
@@ -65,16 +99,13 @@
 
             <br />
           </q-card-section>
-          <div class="q-pa-md" style="max-width: 1500px">
-            <q-btn color="green" label="บันทึก" style="width: 100%" />
-          </div>
 
           <div class="q-pa-md" style="max-width: 1500px">
-            <q-btn color="red" label="ลบ" style="width: 100%" />
+            <q-btn  color="red" label="ยกเลิก" style="width: 100%" />
           </div>
         </q-card>
       </q-expansion-item>
-    </div>
+    </div> -->
 
     <!-- end tab 1  -->
     <div class="q-pa-md q-gutter-sm" style="max-width: 1500px; margin-top :400px; ">
@@ -105,8 +136,8 @@
 
           <q-card-actions align="right" class="bg-white text-teal">
             <q-btn
-              @click="add_acount()"
-              color="green"
+              @click="add_acount(),addTask()"
+              color="primary"
               label="ตกลง"
               style="width: 100%"
               v-close-popup
@@ -181,6 +212,7 @@ export default {
       });
       this.newTask = "";
     },
+
     add_acount() {
       let new_acount = {
         name: this.name_regis,
@@ -194,6 +226,7 @@ export default {
       });
       this.mounted;
     },
+
     deleteTask(index) {
       this.$q
         .dialog({
