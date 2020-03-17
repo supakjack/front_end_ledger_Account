@@ -17,7 +17,7 @@
     <div class="q-pa-md">
       <div class="q-gutter-md" style="max-width: 400px ">
         <!-- strat select ชื่อรายการ -->
-        <q-select outlined v-model="model" :options="options" label="บัญชี" /> 
+        <q-select outlined v-model="bookId" :options="options" label="บัญชี" /> 
          <!-- end select ชื่อรายการ -->
          <br />
         <!-- strat input ชื่อรายการ -->
@@ -67,18 +67,13 @@ export default {
       currencyLabels: "",
        model: null,
       options: [
-        'ธนาคาร', 'เงินสด'
+        '2', '5'
       ]
     };
   },
   methods: {
     addIn() {
       let income_to_list = {
-        id: this.bookId,
-        descript: this.listId,
-        money: this.money
-      };
-      let income_to_book = {
         id: this.bookId,
         descript: this.listId,
         money: this.money
