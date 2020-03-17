@@ -54,14 +54,14 @@
             <br />
             <q-input filled v-model="list_book[index].lab_name" label="ชื่อบัญชี" />
             <br />
-            <q-input filled type="text" v-model="list_book[index].lab_currency" label="สกุลเงิน" />
+            <q-input readonly filled type="text" v-model="list_book[index].lab_currency" label="สกุลเงิน" />
 
             <br />
             <br />
 
             <q-item-section>ประเภทบัญชี เงินสด</q-item-section>
             <br />
-            <q-input filled type="number" v-model="list_book[index].lab_amount" label="ยอดเงินคงเหลือ" />
+            <q-input readonly filled type="number" v-model="list_book[index].lab_amount" label="ยอดเงินคงเหลือ" />
 
             <br />
           </q-card-section>
