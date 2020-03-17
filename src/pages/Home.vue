@@ -95,7 +95,7 @@ export default {
     $store.state.testState = 12345;
     console.log("testState change to 12345 : " + $store.state.testState);
 
-    new axios().getHttp("books/amount/2").then(result => {
+    new axios().getHttp("books/amount/5").then(result => {
       result.data.map((item, index) => {
         console.log(item);
         this.total = item.amount;
