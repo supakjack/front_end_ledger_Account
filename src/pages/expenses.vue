@@ -16,9 +16,9 @@
     <!-- strat input -->
     <div class="q-pa-md">
       <div class="q-gutter-md" style="max-width: 400px">
-        <!-- strat input ชื่อรายการ -->
-        <q-input outlined v-model="bookId" label="ชื่อกระเปา" />
-        <!-- end input ชื่อรายการ -->
+         <!-- strat select ชื่อรายการ -->
+        <q-select outlined v-model="model" :options="options" label="บัญชี" /> 
+         <!-- end select ชื่อรายการ -->
         <br />
         <!-- strat input ชื่อรายการ -->
         <q-input outlined v-model="listId" label="รายการ" />
@@ -63,7 +63,11 @@ export default {
       bookId: "",
       listId: "",
       money: "",
-      currencyLabels: ""
+      currencyLabels: "",
+      model: null,
+      options: [
+        'ธนาคาร', 'เงินสด'
+      ]
     };
   },
   methods: {
@@ -80,4 +84,5 @@ export default {
     }
   }
 };
+ 
 </script>
