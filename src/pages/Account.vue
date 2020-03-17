@@ -72,16 +72,26 @@
               type="number"
               v-model="list_book[index].lab_amount"
               label="ยอดเงินคงเหลือ"
-            /> -->
+            />-->
 
             <br />
           </q-card-section>
           <div class="q-pa-md" style="max-width: 1500px">
-            <q-btn @click="saveBook(list_book[index].lab_id,list_book[index].lab_name)" color="green" label="บันทึก" style="width: 100%" />
+            <q-btn
+              @click="saveBook(list_book[index].lab_id,list_book[index].lab_name)"
+              color="green"
+              label="บันทึก"
+              style="width: 100%"
+            />
           </div>
 
           <div class="q-pa-md" style="max-width: 1500px">
-            <q-btn @click="deleteTask(index)" color="red" label="ลบ" style="width: 100%" />
+            <q-btn
+              @click="deleteTask(list_book[index].lab_id)"
+              color="red"
+              label="ลบ"
+              style="width: 100%"
+            />
           </div>
         </q-card>
       </q-expansion-item>
@@ -166,66 +176,63 @@ export default {
     console.log("facebookId : " + $store.state.facebookId);
 
     console.log("testState from another component : " + $store.state.testState);
-    //
-    new axios().getHttp("books/1").then(result => {
-      this.list_book = [];
-      // this.id_books = [];
-      //
-      result.data.map((item, index) => {
-        this.list_book.push(item);
-        // this.id_books.push(item.lab_id);
-        // console.log(this.id_books);
-      });
-      //
-      // this.cleanList();
-      //
-      let tmpList_book = [];
-      console.log(tmpList_book);
-      for (let i = 0; i < this.list_book.length; i++) {
-        if (i > 0) {
-          tmpList_book.push(this.list_book[i]);
-          let check = 0;
 
-          for (let j = 0; j < tmpList_book.length; j++) {
-            if (tmpList_book[j].lab_id == this.list_book[i].lab_id) {
-              console.log("<--->");
-              console.log(
-                "  this.list_book[i].lab_id : " + this.list_book[i].lab_id
-              );
-              console.log(
-                "  tmpList_book[j].lab_id  : " + tmpList_book[j].lab_id
-              );
-              check++;
-              console.log("<--->");
-            }
-          }
-          if (check > 1) {
-            tmpList_book.splice(tmpList_book.length - 1, 1);
-          }
-        } else {
-          tmpList_book.push(this.list_book[i]);
-        }
-      }
-      this.list_book = tmpList_book;
-      //
-    });
-    //
+    this.initValue();
   },
   methods: {
+    initValue() {
+      //
+      new axios().getHttp("books/1").then(result => {
+        this.list_book = [];
+        // this.id_books = [];
+        //
+        result.data.map((item, index) => {
+          this.list_book.push(item);
+          // this.id_books.push(item.lab_id);
+          // console.log(this.id_books);
+        });
+        //
+        // this.cleanList();
+        //
+        let tmpList_book = [];
+        console.log(tmpList_book);
+        for (let i = 0; i < this.list_book.length; i++) {
+          if (i > 0) {
+            tmpList_book.push(this.list_book[i]);
+            let check = 0;
+
+            for (let j = 0; j < tmpList_book.length; j++) {
+              if (tmpList_book[j].lab_id == this.list_book[i].lab_id) {
+                console.log("<--->");
+                console.log(
+                  "  this.list_book[i].lab_id : " + this.list_book[i].lab_id
+                );
+                console.log(
+                  "  tmpList_book[j].lab_id  : " + tmpList_book[j].lab_id
+                );
+                check++;
+                console.log("<--->");
+              }
+            }
+            if (check > 1) {
+              tmpList_book.splice(tmpList_book.length - 1, 1);
+            }
+          } else {
+            tmpList_book.push(this.list_book[i]);
+          }
+        }
+        this.list_book = tmpList_book;
+        //
+      });
+      //
+    },
     saveBook(id, nameBook) {
       new axios().putHttp("books/" + id, { name: nameBook }).then(result => {
         //
         console.log(result);
-        this.mounted;
+        this.initValue();
         //
       });
-    },
-    addTask() {
-      this.tasks.push({
-        title: this.newTask,
-        done: false
-      });
-      this.newTask = "";
     },
     add_acount() {
       let new_acount = {
@@ -237,10 +244,10 @@ export default {
       console.log(new_acount);
       new axios().postHttp("books", new_acount).then(result => {
         console.log(result);
+        this.initValue();
       });
-      this.mounted;
     },
-    deleteTask(index) {
+    deleteTask(id) {
       this.$q
         .dialog({
           title: "Confirm",
@@ -249,13 +256,13 @@ export default {
           persisten: true
         })
         .onOk(() => {
-          this.tasks.splice(index, 1);
+          this.tasks.splice(id, 1);
           this.$q.notify("Task delete");
+          new axios().deleteHttp("books/" + id).then(result => {
+            console.log(result);
+            this.initValue();
+          });
         });
-      new axios().postHttp("books/8").then(result => {
-        console.log(result);
-      });
-      this.mounted;
     }
   }
 };
