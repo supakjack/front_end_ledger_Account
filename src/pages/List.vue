@@ -11,7 +11,7 @@
 
     <q-btn-dropdown label="ข้อมูลรายรับ - รายจ่ายในวันที่ 10/03/2020">
       <q-list>
-        <q-item clickable >
+        <q-item clickable>
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -24,7 +24,7 @@
           </q-item-section>
         </q-item>
 
-        <q-item clickable >
+        <q-item clickable>
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -41,7 +41,7 @@
 
     <q-btn-dropdown label="ข้อมูลรายรับ - รายจ่ายในวันที่ 09/03/2020">
       <q-list>
-        <q-item clickable  >
+        <q-item clickable>
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -54,7 +54,7 @@
           </q-item-section>
         </q-item>
 
-        <q-item clickable  >
+        <q-item clickable>
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -90,7 +90,7 @@
 
 <script>
 import $store from "../store/State";
-import FacadeServices from "./../services/FacadeServices"
+import FacadeServices from "./../services/FacadeServices";
 const axios = new FacadeServices().makeAxios();
 
 export default {
@@ -112,11 +112,51 @@ export default {
     new axios().getHttp("books/1").then(result => {
       result.data.map((item, index) => {
         console.log(item);
-        this.list_data = item
-        
+        this.list_data = item;
       });
     });
 
+    new axios().getHttp("books/1").then(result => {
+      this.list_list = [];
+      // this.id_lists = [];
+      //
+      result.data.map((item, index) => {
+        this.list_list.push(item);
+        // this.id_lists.push(item.lab_id);
+        // console.log(this.id_lists);
+      });
+
+      let tmpList_list = [];
+      console.log(tmpList_list);
+      for (let i = 0; i < this.list_list.length; i++) {
+        if (i > 0) {
+          tmpList_list.push(this.list_list[i]);
+          let check = 0;
+
+          for (let j = 0; j < tmpList_list.length; j++) {
+            if (tmpList_list[j].lab_id == this.list_list[i].lab_id) {
+              console.log("<--->");
+              console.log(
+                "  this.list_list[i].lab_id : " + this.list_list[i].lab_id
+              );
+              console.log(
+                "  tmpList_list[j].lab_id  : " + tmpList_list[j].lab_id
+              );
+              check++;
+              console.log("<--->");
+            }
+          }
+          if (check > 1) {
+            tmpList_list.splice(tmpList_list.length - 1, 1);
+          }
+        } else {
+          tmpList_list.push(this.list_list[i]);
+        }
+      }
+      this.list_list = tmpList_list;
+      //
+    });
+    //
   },
   data() {
     return {
