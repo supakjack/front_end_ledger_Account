@@ -11,7 +11,7 @@
 
     <q-btn-dropdown label="ข้อมูลรายรับ - รายจ่ายในวันที่ 10/03/2020">
       <q-list>
-        <q-item clickable >
+        <q-item clickable>
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -24,7 +24,7 @@
           </q-item-section>
         </q-item>
 
-        <q-item clickable >
+        <q-item clickable>
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -41,7 +41,7 @@
 
     <q-btn-dropdown label="ข้อมูลรายรับ - รายจ่ายในวันที่ 09/03/2020">
       <q-list>
-        <q-item clickable  >
+        <q-item clickable>
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -54,7 +54,7 @@
           </q-item-section>
         </q-item>
 
-        <q-item clickable  >
+        <q-item clickable>
           <q-item-section>
             <div class="row top-center">
               <q-item-label></q-item-label>
@@ -90,7 +90,7 @@
 
 <script>
 import $store from "../store/State";
-import FacadeServices from "./../services/FacadeServices"
+import FacadeServices from "./../services/FacadeServices";
 const axios = new FacadeServices().makeAxios();
 
 export default {
@@ -112,11 +112,9 @@ export default {
     new axios().getHttp("books/1").then(result => {
       result.data.map((item, index) => {
         console.log(item);
-        this.list_data = item
-        
+        this.list_data = item;
       });
     });
-
   },
   data() {
     return {
