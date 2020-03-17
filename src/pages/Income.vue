@@ -67,7 +67,7 @@ export default {
       currencyLabels: "",
        model: null,
       options: [
-        '2', '5'
+        'ธนาคาร', 'เงินสด'
       ]
     };
   },
