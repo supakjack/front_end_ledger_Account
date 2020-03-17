@@ -50,8 +50,8 @@
             <div style="font-size:25px">local_grocery_store</div>
           </i>รายจ่าย
           <span style="float:right;">
-              <p align="right" v-if="expense_today == null">0 {{currency}}</p>
-              <p align="right" v-else>{{expense_today}} {{currency}}</p>
+            <p align="right" v-if="expense_today == null">0 {{currency}}</p>
+            <p align="right" v-else>{{expense_today}} {{currency}}</p>
           </span>
         </p>
       </q-banner>
@@ -69,7 +69,14 @@
     </div>
     <div class="q-pa-md q-gutter-sm">
       <div align="center">
-        <q-btn  exact to="/expenses" size="12px" class="q-px-xl q-py-xs" color="red" label="รายจ่าย" />
+        <q-btn
+          exact
+          to="/expenses"
+          size="12px"
+          class="q-px-xl q-py-xs"
+          color="red"
+          label="รายจ่าย"
+        />
         <q-btn exact to="/Income" size="12px" class="q-px-xl q-py-xs" color="green" label="รายรับ" />
       </div>
     </div>
@@ -97,70 +104,41 @@ export default {
     });
 
     new axios().getHttp("books/currency/2").then(result => {
-      result.data.map((item,index)=>{
-        console.log(item)
-        this.currency = item.currency
-      })
+      result.data.map((item, index) => {
+        console.log(item);
+        this.currency = item.currency;
+      });
     });
 
     new axios().getHttp("books/expense/2").then(result => {
-      result.data.map((item,index)=>{
-        console.log(item)
-        this.expense = item.expense
-      })
+      result.data.map((item, index) => {
+        console.log(item);
+        this.expense = item.expense;
+        this.chart_data[0] = item.expense;
+      });
     });
-   new axios().getHttp("books/income/2").then(result => {
-      result.data.map((item,index)=>{
-        console.log(item)
-        this.income = item.income
-      })
+    new axios().getHttp("books/income/2").then(result => {
+      result.data.map((item, index) => {
+        console.log(item);
+        this.income = item.income;
+        this.chart_data[1] = item.income;
+        this.showChart();
+      });
     });
 
-     new axios().getHttp("books/expense/2/now").then(result => {
+    new axios().getHttp("books/expense/2/now").then(result => {
       //  console.log(result)
-       result.data.map((item,index)=>{
-         console.log(item.expense)
-          this.expense_today = item.expense
-       })
-     });
+      result.data.map((item, index) => {
+        console.log(item.expense);
+        this.expense_today = item.expense;
+      });
+    });
     new axios().getHttp("books/income/2/now").then(result => {
       //  console.log(result)
-       result.data.map((item,index)=>{
-         console.log(item.income)
-          this.income_today = item.income
-       })
-     });
-
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-      type: "doughnut",
-      data: {
-        labels: ["รายจ่าย", "รายรับ"],
-        datasets: [
-          {
-            label: "# of Votes",
-            data: [this.expense, this.income],
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.2)",
-              "rgba(54, 162, 235, 0.2)"
-            ],
-            borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
-            borderWidth: 1
-          }
-        ]
-      },
-      options: {
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-                display: false
-              }
-            }
-          ]
-        }
-      }
+      result.data.map((item, index) => {
+        console.log(item.income);
+        this.income_today = item.income;
+      });
     });
   },
   data() {
@@ -171,20 +149,56 @@ export default {
       income: "1000.50",
       income_today: "1000.50",
       currency: "บาท",
+      chart_data: [],
       value: 10
     };
   },
   methods: {
-    addIn(){
+    addIn() {
       alert("income service");
       console.log(home_income);
-      home_income = "income_service"
+      home_income = "income_service";
     },
-     addEx(){
+    addEx() {
       alert("Ex service");
       console.log(home_income);
-      home_income = "expense_service"
+      home_income = "expense_service";
+    },
+    showChart() {
+      console.log(this.chart_data[0]);
+      console.log(this.chart_data[1]);
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: ["รายจ่าย", "รายรับ"],
+          datasets: [
+            {
+              label: "# of Votes",
+              data: [this.chart_data[0], this.chart_data[1]],
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(54, 162, 235, 0.2)"
+              ],
+              borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+              borderWidth: 1
+            }
+          ]
+        },
+        options: {
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                  display: false
+                }
+              }
+            ]
+          }
+        }
+      });
     }
-  },
+  }
 };
 </script>
