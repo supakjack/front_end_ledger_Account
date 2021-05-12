@@ -14,7 +14,7 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "quasar": "^1.0.0",
     "sweetalert2": "^9.10.1",
     "vuex": "^3.1.2"
